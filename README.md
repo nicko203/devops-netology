@@ -5,11 +5,11 @@
 Игнорируемые файлы отслеживаются в файле .gitignore, находящимся в корневом каталоге репозитория. 
 
 Будут игнорироваться:
-- каталоги /.terraform/ и содержащиеся в них файлы;
-- файлы .tfstate с расширением и без;
+- все файлы содержащиеся в каталогах /.terraform/ в любом месте дерева;
+- все файлы .tfstate с расширением и без;
 - файлы crash.log;
 - файлы с расширением tfvars (*.tfvars);
 - файлы override.tf и override.tf.json;
 - файлы по шаблону *_override.tf и *_override.tf.json;
-- файлы .terraformrc и terraform.rc.
+- файлы .terraformrc и terraform.rc
 
