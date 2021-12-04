@@ -1,4 +1,4 @@
-##Задание №1 – Знакомимся с gitlab и bitbucket
+## Задание №1 – Знакомимся с gitlab и bitbucket
 
 - созданы аккаунты на https://gitlab.com/  и https://bitbucket.org/ ;
 - созданы публичные репозитории;
@@ -14,7 +14,7 @@
     - origin	https://github.com/nicko203/devops-netology.git (fetch)
     - origin	https://github.com/nicko203/devops-netology.git (push)
 
-- "запушен" локальный репозитория на серверы:
+- "запушен" локальный репозиторий на серверы:
     - git push gitlab
     - git push bitbucket
     - git push origin
