@@ -23,7 +23,15 @@
 ## Задание №2 – Теги
 
 - создан легковестный тег v0.0;
-- тег v0.0 запущен в три remote репозитория;
+    - git tag v0.0
+- тег v0.0 "запушен" в три remote репозитория:
+    - git push bitbucket v0.0
+    - git push gitlab v0.0
+    - git push origin v0.0
 - создан аннотированный тег v0.1;
-- тег v0.1 запущен в три remote репозитория.
+    - git tag -a v0.1
+- тег v0.1 "запушен" в три remote репозитория.
+    - git push bitbucket v0.1
+    - git push gitlab v0.1
+    - git push origin v0.1
 
