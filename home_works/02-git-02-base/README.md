@@ -42,3 +42,7 @@
 - изменения отправлены на github ( git push -u origin fix );
 - скриншот схемы коммитов: ![network](network_after_create_branch_fix.png)
 
+## Задание №4 – Упрощаем себе жизнь
+
+Работа в PyCharm с git: ![PyCharn](PyCharm_git.png)
+
