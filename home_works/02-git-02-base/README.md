@@ -34,3 +34,11 @@
     - git push bitbucket v0.1
     - git push gitlab v0.1
     - git push origin v0.1
+
+## Задание №3 – Ветки
+
+- переход на требуемый коммит ( git checkout 286eeba );
+- сoздана ветка fix ( git checkout -b fix  );
+- изменения отправлены на github ( git push -u origin fix );
+- скриншот схемы коммитов: network_after_create_branch_fix.png
+
