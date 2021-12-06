@@ -40,5 +40,5 @@
 - переход на требуемый коммит ( git checkout 286eeba );
 - сoздана ветка fix ( git checkout -b fix  );
 - изменения отправлены на github ( git push -u origin fix );
-- скриншот схемы коммитов: network_after_create_branch_fix.png
+- скриншот схемы коммитов: ![network](network_after_create_branch_fix.png)
 
