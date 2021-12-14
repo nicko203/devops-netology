@@ -53,9 +53,14 @@ dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
 
 ### 5. Найдите коммит в котором была создана функция func providerSource, ее определение в коде выглядит так func providerSource(...) (вместо троеточего перечислены аргументы).
 Решение:
-git log --pretty=oneline  -S"func providerSource("
+$ git log --pretty=oneline  -S"func providerSource("
+или
+$ git grep -p "func providerSource("               - ищем файл, содержащий функцию
+$ git log -L :providerSource:provider_source.go    - находим коммит, в котором была первый раз объявлена функция
 
 Коммит:
-
 8c928e83589d90a031f811fae52a81be7153e82f main: Consult local directories as potential mirrors of providers
 
+
+### 6. Найдите все коммиты в которых была изменена функция globalPluginDirs.
+Решение:
