@@ -9,4 +9,9 @@ $ git show aefea
 Комментарий: Update CHANGELOG.md
 
 
+### 2. Какому тегу соответствует коммит 85024d3?
+Решение:
+$ git tag --points-at 85024d3
+
+Тег: v0.12.23
 
