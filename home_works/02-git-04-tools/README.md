@@ -67,3 +67,14 @@ $ git log -L :providerSource:provider_source.go    - находим коммит
 
 ### 6. Найдите все коммиты в которых была изменена функция globalPluginDirs.
 Решение:
+$ git grep -p "globalPluginDirs("
+
+$ git log -L :globalPluginDirs:plugins.go
+
+Коммиты:
+66ebff90cdfaa6938f26f908c7ebad8d547fea17
+
+41ab0aef7a0fe030e84018973a64135b11abcd70
+
+78b12205587fe839f10d946ea3fdc06719decb05
+
