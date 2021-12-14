@@ -54,8 +54,11 @@ dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
 ### 5. Найдите коммит в котором была создана функция func providerSource, ее определение в коде выглядит так func providerSource(...) (вместо троеточего перечислены аргументы).
 Решение:
 $ git log --pretty=oneline  -S"func providerSource("
+
 или
+
 $ git grep -p "func providerSource("               - ищем файл, содержащий функцию
+
 $ git log -L :providerSource:provider_source.go    - находим коммит, в котором была первый раз объявлена функция
 
 Коммит:
