@@ -67,14 +67,21 @@ $ git log -L :providerSource:provider_source.go    - находим коммит
 
 ### 6. Найдите все коммиты в которых была изменена функция globalPluginDirs.
 Решение:
+
 $ git grep -p "globalPluginDirs("
 
 $ git log -L :globalPluginDirs:plugins.go
 
 Коммиты:
+
 66ebff90cdfaa6938f26f908c7ebad8d547fea17
 
 41ab0aef7a0fe030e84018973a64135b11abcd70
 
 78b12205587fe839f10d946ea3fdc06719decb05
 
+### 7. Кто автор функции synchronizedWriters?
+Решение:
+git log -S"func synchronizedWriters(" --pretty=format:’%h %an %ad %s’
+
+5ac311e2a Martin Atkins Wed May 3 16:25:41 2017 -0700 main: synchronize writes to VT100-faker on Windows
