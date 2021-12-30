@@ -62,7 +62,7 @@ end
 
 Cтрока man bash 268
 
-Пример создания каталогов: *mkdir /usr/local/src/bash/{old,new,dist,bugs}*
+Пример создания каталогов: *mkdir -p /usr/local/src/bash/{old,new,dist,bugs}*
 
 
 ![quest9](quest9.jpg)
