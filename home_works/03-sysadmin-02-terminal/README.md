@@ -45,7 +45,7 @@ ls: невозможно получить доступ к 'abracadabra': Нет 
 
 Содержимое файла test.txt:
 
-**$ cat ./test.txt **
+**_$ cat ./test.txt_**
 
 aaaAaaa
 
@@ -55,7 +55,7 @@ hhhHhhh
 
 Передаём  test.txt на вход команды grep , результат выводим в out.log
 
-**$ grep "aAa" <./test.txt > ./out.log**
+**_$ grep "aAa" <./test.txt > ./out.log_**
 
 **_$ cat ./out.log_**
 
