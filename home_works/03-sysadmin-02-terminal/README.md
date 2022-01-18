@@ -45,7 +45,7 @@ ls: невозможно получить доступ к 'abracadabra': Нет 
 
 Содержимое файла test.txt:
 
-$ cat ./test.txt 
+**$ cat ./test.txt **
 
 aaaAaaa
 
@@ -55,9 +55,9 @@ hhhHhhh
 
 Передаём  test.txt на вход команды grep , результат выводим в out.log
 
-$ grep "aAa" <./test.txt > ./out.log
+**$ grep "aAa" <./test.txt > ./out.log**
 
-$ cat ./out.log 
+**$ cat ./out.log **
 
 aaaAaaa
 
@@ -65,6 +65,8 @@ aaaAaaa
 
 ### 11. Узнайте, какую наиболее старшую версию набора инструкций SSE поддерживает ваш процессор с помощью /proc/cpuinfo.
 
-$ cat /proc/cpuinfo | grep  -i SSE
+**$ cat /proc/cpuinfo | grep  -i SSE**
+
+Старшая версия SSE: sse4_2
 
 
