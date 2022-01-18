@@ -56,6 +56,7 @@ hhhHhhh
 Передаём  test.txt на вход команды grep , результат выводим в out.log
 
 $ grep "aAa" <./test.txt > ./out.log
+
 $ cat ./out.log 
 
 aaaAaaa
