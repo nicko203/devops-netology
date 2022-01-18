@@ -57,7 +57,7 @@ hhhHhhh
 
 **$ grep "aAa" <./test.txt > ./out.log**
 
-**$ cat ./out.log **
+**_$ cat ./out.log_**
 
 aaaAaaa
 
@@ -65,7 +65,7 @@ aaaAaaa
 
 ### 11. Узнайте, какую наиболее старшую версию набора инструкций SSE поддерживает ваш процессор с помощью /proc/cpuinfo.
 
-**$ cat /proc/cpuinfo | grep  -i SSE**
+**_$ cat /proc/cpuinfo | grep  -i SSE_**
 
 Старшая версия SSE: sse4_2
 
