@@ -125,10 +125,10 @@ netology
 
 ### 13. Бывает, что есть необходимость переместить запущенный процесс из одной сессии в другую. Попробуйте сделать это, воспользовавшись reptyr. Например, так можно перенести в screen процесс, который вы запустили по ошибке в обычной SSH-сессии.  
 
-В терминале pts/4 запускаю загрузку образа Debian: **_$ wget https://mirror.yandex.ru/debian-cd/current/amd64/iso-dvd/debian-11.2.0-amd64-DVD-1.iso_**..
-![first_terminal](screenshot_before.png)..
+В терминале pts/4 запускаю загрузку образа Debian: **_$ wget https://mirror.yandex.ru/debian-cd/current/amd64/iso-dvd/debian-11.2.0-amd64-DVD-1.iso_**  
+![first_terminal](screenshot_before.png)  
 
-Открываю новый терминал, выясняю PID, запущенного процесса wget и переношу его в текущую сессию:..
+Открываю новый терминал, выясняю PID, запущенного процесса wget и переношу его в текущую сессию:  
 ![second_terminal](screenshot_after.png)
 
 ### 14. sudo echo string > /root/new_file не даст выполнить перенаправление под обычным пользователем, так как перенаправлением занимается процесс shell'а, который запущен без sudo под вашим пользователем. Для решения данной проблемы можно использовать конструкцию echo string | sudo tee /root/new_file. Узнайте что делает команда tee и почему в отличие от sudo echo команда с sudo tee будет работать.
