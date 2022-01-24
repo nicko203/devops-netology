@@ -25,17 +25,17 @@
 ### /usr/sbin/opensnoop-bpfcc  
 ### На какие файлы вы увидели вызовы группы open за первую секунду работы утилиты? Воспользуйтесь пакетом bpfcc-tools для Ubuntu 20.04.  
 
-root@pc970:/home/nicko/EDU/NETOLOGY/DevOps# /usr/sbin/opensnoop-bpfcc -d 1
-PID    COMM               FD ERR PATH
-2342   cinnamon           22   0 /proc/self/stat
-262    systemd-journal    -1   2 /var/log/journal/68297b98edf445cbaf700c004969a88c/system.journal
-262    systemd-journal    -1   2 /var/log/journal/68297b98edf445cbaf700c004969a88c/system.journal
-2342   cinnamon           22   0 /proc/self/stat
-3330   proftpd            -1   2 /etc/shutmsg
-2342   cinnamon           22   0 /proc/self/stat
-2342   cinnamon           22   0 /proc/self/stat
-2342   cinnamon           22   0 /proc/self/stat
-2342   cinnamon           22   0 /proc/self/stat
+root@pc970:/home/nicko/EDU/NETOLOGY/DevOps# /usr/sbin/opensnoop-bpfcc -d 1  
+PID    COMM               FD ERR PATH  
+2342   cinnamon           22   0 /proc/self/stat  
+262    systemd-journal    -1   2 /var/log/journal/68297b98edf445cbaf700c004969a88c/system.journal  
+262    systemd-journal    -1   2 /var/log/journal/68297b98edf445cbaf700c004969a88c/system.journal  
+2342   cinnamon           22   0 /proc/self/stat  
+3330   proftpd            -1   2 /etc/shutmsg  
+2342   cinnamon           22   0 /proc/self/stat  
+2342   cinnamon           22   0 /proc/self/stat  
+2342   cinnamon           22   0 /proc/self/stat  
+2342   cinnamon           22   0 /proc/self/stat  
 
 
 ### 6. Какой системный вызов использует uname -a? Приведите цитату из man по этому системному вызову, где описывается альтернативное местоположение в /proc, где можно узнать версию ядра и релиз ОС.
