@@ -18,12 +18,12 @@
 Открываю файл в редакторе vi, определяю PID процесса vi:  
 
 **_$ ps ax | grep 123_**  
-**_9620 pts/11   S+     0:00 vi ./_123.txt_**  
+**_9620 pts/11   S+     0:00 vi ./\_123.txt_**  
 **_9648 pts/6    S+     0:00 grep 123_**  
 
 
-**_$ lsof | grep "_123"_**  
-**_vi         9620                            nicko    4u      REG                8,1     16384         13239247 /home/nicko/tmp1/._123.txt.swp_**  
+**_$ lsof | grep "\_123"_**  
+**_vi         9620                            nicko    4u      REG                8,1     16384         13239247 /home/nicko/tmp1/.\_123.txt.swp_**  
 
 
 **_# ls -l_**
@@ -32,17 +32,16 @@
 **_lrwx------ 1 nicko nicko 64 янв 25 10:44 1 -> /dev/pts/11_**
 **_l-wx------ 1 nicko nicko 64 янв 25 10:44 10 -> 'pipe:[47928526]'_**
 **_lrwx------ 1 nicko nicko 64 янв 25 10:44 2 -> /dev/pts/11_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 4 -> /home/nicko/tmp1/._123.txt.swp_**
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 4 -> /home/nicko/tmp1/.\_123.txt.swp_**
 **_lrwx------ 1 nicko nicko 64 янв 25 10:44 5 -> /dev/pts/4_**
 **_lrwx------ 1 nicko nicko 64 янв 25 10:44 6 -> /dev/pts/4_**
 
 Удаляю файл и проверяю состояние:  
 
-**_$ rm /home/nicko/tmp1/._123.txt.swp_**  
+**_$ rm /home/nicko/tmp1/.\_123.txt.swp_**  
 
-**_$ lsof | grep "_123"_**  
-**_vi         9620                            nicko    4u      REG                8,1     16384         13239247 /home/nicko/tmp1/._123.txt.swp (deleted)_**  
-
+**_$ lsof | grep "\_123"_**  
+**_vi         9620                            nicko    4u      REG                8,1     16384         13239247 /home/nicko/tmp1/.\_123.txt.swp (deleted)_**  
 
 Файл помечен как удалённый, но место на диске по прежнему занимает.  
 
@@ -50,8 +49,8 @@
 
 **_$ echo '' > /proc/9620/fd/4_**  
 
-**_$ lsof | grep "_123"_**  
-**_vi         9620                            nicko    4u      REG                8,1         1         13239247 /home/nicko/tmp1/._123.txt.swp (deleted)_**  
+**_$ lsof | grep "\_123"_**  
+**_vi         9620                            nicko    4u      REG                8,1         1         13239247 /home/nicko/tmp1/.\_123.txt.swp (deleted)_**  
 
 Место освобожденно.  
 
