@@ -26,15 +26,15 @@
 **_vi         9620                            nicko    4u      REG                8,1     16384         13239247 /home/nicko/tmp1/.\_123.txt.swp_**  
 
 
-**_# ls -l_**
-**_итого 0_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 0 -> /dev/pts/11_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 1 -> /dev/pts/11_**
-**_l-wx------ 1 nicko nicko 64 янв 25 10:44 10 -> 'pipe:[47928526]'_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 2 -> /dev/pts/11_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 4 -> /home/nicko/tmp1/.\_123.txt.swp_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 5 -> /dev/pts/4_**
-**_lrwx------ 1 nicko nicko 64 янв 25 10:44 6 -> /dev/pts/4_**
+**_# ls -l_**  
+**_итого 0_**  
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 0 -> /dev/pts/11_**  
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 1 -> /dev/pts/11_**  
+**_l-wx------ 1 nicko nicko 64 янв 25 10:44 10 -> 'pipe:[47928526]'_**  
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 2 -> /dev/pts/11_**  
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 4 -> /home/nicko/tmp1/.\_123.txt.swp_**  
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 5 -> /dev/pts/4_**  
+**_lrwx------ 1 nicko nicko 64 янв 25 10:44 6 -> /dev/pts/4_**  
 
 Удаляю файл и проверяю состояние:  
 
