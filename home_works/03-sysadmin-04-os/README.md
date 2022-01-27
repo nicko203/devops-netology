@@ -5,19 +5,19 @@
 
 1.1. Создан init-файл *_/etc/systemd/system/node_exporter.service_*:  
 
-*_[Unit]  
-Description=Node Exporter Service  
-After=network.target  
+*_[Unit]_*  
+*_Description=Node Exporter Service_*  
+*_After=network.target_*  
 
-[Service]  
-Type=simple  
-EnvironmentFile=-/etc/default/node_exporter  
-ExecStart=/usr/local/bin/node_exporter $NODE_EXPORTER_OPTS  
-ExecReload=/bin/kill -HUP $MAINPID  
-Restart=on-failure  
+*_[Service]_*  
+*_Type=simple_*  
+*_EnvironmentFile=-/etc/default/node_exporter_*  
+*_ExecStart=/usr/local/bin/node_exporter $NODE_EXPORTER_OPTS_*  
+*_ExecReload=/bin/kill -HUP $MAINPID_*  
+*_Restart=on-failure_*  
 
-[Install]  
-WantedBy=multi-user.target_*  
+*_[Install]_*  
+*_WantedBy=multi-user.target_*  
 
 
 1.2. Создан файл *_/etc/default/node_exporter_*  для передачи опций процессу:  
