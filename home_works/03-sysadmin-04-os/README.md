@@ -37,6 +37,33 @@ NODE_EXPORTER_OPTS=
 
 ### 2. Ознакомьтесь с опциями node_exporter и выводом /metrics по-умолчанию. Приведите несколько опций, которые вы бы выбрали для базового мониторинга хоста по CPU, памяти, диску и сети.  
 
+Полный список метрик node_exporter получаем командой: *_curl 127.0.0.1:9100/metrics_*  
+
+Для базового мониторинга хоста я бы выбрал:  
+
+CPU:  
+node_cpu_seconds_total{cpu="0",mode="idle"} 2.37368681e+06  
+node_cpu_seconds_total{cpu="0",mode="iowait"} 28979.73  
+node_cpu_seconds_total{cpu="0",mode="system"} 19975.73  
+node_cpu_seconds_total{cpu="0",mode="user"} 78565.16  
+
+ОЗУ:  
+node_memory_MemTotal_bytes 6.152200192e+09  
+node_memory_MemAvailable_bytes 1.234620416e+09  
+
+Диск:  
+node_disk_read_bytes_total{device="sda"} 1.68312164352e+11  
+node_disk_write_time_seconds_total{device="sda"} 110996.581  
+node_disk_read_time_seconds_total{device="sda"} 66134.383  
+
+Сеть:  
+node_network_info{address="2c:41:38:9e:bf:80",broadcast="ff:ff:ff:ff:ff:ff",device="eth0",duplex="full",ifalias="",operstate="up"} 1  
+node_network_receive_bytes_total{device="eth0"} 6.7873508875e+10  
+node_network_receive_drop_total{device="eth0"} 632192  
+node_network_receive_errs_total{device="eth0"} 0  
+node_network_transmit_bytes_total{device="eth0"} 8.079904087e+09  
+node_network_transmit_drop_total{device="eth0"} 0  
+node_network_transmit_errs_total{device="eth0"} 0  
 
 ### 3. Установите в свою виртуальную машину Netdata. Воспользуйтесь готовыми пакетами для установки (sudo apt install -y netdata). После успешной установки:  
 
@@ -72,3 +99,4 @@ NODE_EXPORTER_OPTS=
 
 ### 6. Запустите любой долгоживущий процесс (не ls, который отработает мгновенно, а, например, sleep 1h) в отдельном неймспейсе процессов; покажите, что ваш процесс работает под PID 1 через nsenter. Для простоты работайте в данном задании под root (sudo -i). Под обычным пользователем требуются дополнительные опции (--map-root-user) и т.д.  
 
+![nsenter](nsenter.png)
