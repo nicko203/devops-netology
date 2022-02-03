@@ -51,4 +51,17 @@
 
 ### 6. Соберите mdadm RAID1 на паре разделов 2 Гб.  
 
+RAID1 создаю командой *_mdadm --create --verbose /dev/md1 -l 1 -n 2 /dev/sd{a1,b1}_*  
+
+
+### 7. Соберите mdadm RAID0 на второй паре маленьких разделов.  
+
+RAID0 создаю командой *_mdadm --create --verbose /dev/md0 -l 0 -n 2 /dev/sd{a2,b2}_*  
+
+Результат:  
+
+![create_RAIDs](create_RAIDs.png)  
+
+
+### 8. Создайте 2 независимых PV на получившихся md-устройствах.  
 
