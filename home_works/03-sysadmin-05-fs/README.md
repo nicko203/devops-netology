@@ -29,7 +29,7 @@
 
 Выполнено, два диска добавлены:  
 
-!(TwoDiskAdded)[TwoDiskAdded.png]  
+![TwoDiskAdded](TwoDiskAdded.png)  
 
 
 ### 4. Используя fdisk, разбейте первый диск на 2 раздела: 2 Гб, оставшееся пространство.  
