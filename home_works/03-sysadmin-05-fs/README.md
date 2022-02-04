@@ -126,4 +126,14 @@ RAID0 создаю командой **_mdadm --create --verbose /dev/md0 -l 0 -n
 
 ### 16. Используя pvmove, переместите содержимое PV с RAID0 на RAID1.  
 
+Перемещаю командой **_pvmove /dev/md0 /dev/md1_**  
 
+![pvmove](pvmove.png)  
+
+### 17. Сделайте --fail на устройство в вашем RAID1 md.  
+
+Помечаю диск в качестве "сбойного" командой **_mdadm --manage /dev/md1 --fail /dev/sdb1_**  
+
+###  18. Подтвердите выводом dmesg, что RAID1 работает в деградированном состоянии.  
+
+![disk_fail](disk_fail.png)  
