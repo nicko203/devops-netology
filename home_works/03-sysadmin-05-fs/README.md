@@ -65,3 +65,13 @@ RAID0 создаю командой *_mdadm --create --verbose /dev/md0 -l 0 -n 
 
 ### 8. Создайте 2 независимых PV на получившихся md-устройствах.  
 
+**_pvcreate /dev/md1 /dev/md0_**  
+*_File descriptor 9 (pipe:[15694]) leaked on pvcreate invocation. Parent PID 1309: bash_*  
+*_File descriptor 11 (pipe:[15695]) leaked on pvcreate invocation. Parent PID 1309: bash_*  
+*_  Physical volume "/dev/md1" successfully created._*  
+*_  Physical volume "/dev/md0" successfully created._*  
+
+
+### 9. Создайте общую volume-group на этих двух PV.  
+
+
