@@ -85,3 +85,13 @@ RAID0 создаю командой **_mdadm --create --verbose /dev/md0 -l 0 -n
 
 ### 10. Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.  
 
+**_lvcreate -L 100M vg01 /dev/md0_**  
+*_File descriptor 9 (pipe:[15694]) leaked on lvcreate invocation. Parent PID 1309: bash_*  
+*_File descriptor 11 (pipe:[15695]) leaked on lvcreate invocation. Parent PID 1309: bash-*  
+*_  Logical volume "lvol0" created.-*  
+
+![lvcreate](lvcreate.png)  
+
+### 11. Создайте mkfs.ext4 ФС на получившемся LV.  
+
+
