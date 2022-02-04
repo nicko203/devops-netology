@@ -34,7 +34,7 @@
 
 ### 4. Используя fdisk, разбейте первый диск на 2 раздела: 2 Гб, оставшееся пространство.  
 
-Диск *_/dev/sda_* разбит на два раздела:  
+Диск **_/dev/sda_** разбит на два раздела:  
 
 ![sda_fdisk_split](sda_fdisk_split.png)  
 
@@ -42,8 +42,8 @@
 ### 5. Используя sfdisk, перенесите данную таблицу разделов на второй диск.  
 
 Перенос выполняю командами:  
-*_sfdisk -d /dev/sda > ./partitions-sda.txt_*  
-*_sfdisk /dev/sdb < partitions-sda.txt_*  
+**_sfdisk -d /dev/sda > ./partitions-sda.txt_**  
+**_sfdisk /dev/sdb < partitions-sda.txt_**  
 
 Результат:  
 
@@ -51,7 +51,7 @@
 
 ### 6. Соберите mdadm RAID1 на паре разделов 2 Гб.  
 
-RAID1 создаю командой *_mdadm --create --verbose /dev/md1 -l 1 -n 2 /dev/sd{a1,b1}_*  
+RAID1 создаю командой **_mdadm --create --verbose /dev/md1 -l 1 -n 2 /dev/sd{a1,b1}_**  
 
 
 ### 7. Соберите mdadm RAID0 на второй паре маленьких разделов.  
@@ -70,6 +70,8 @@ RAID0 создаю командой *_mdadm --create --verbose /dev/md0 -l 0 -n 
 *_File descriptor 11 (pipe:[15695]) leaked on pvcreate invocation. Parent PID 1309: bash_*  
 *_  Physical volume "/dev/md1" successfully created._*  
 *_  Physical volume "/dev/md0" successfully created._*  
+
+![pvcreate](pvcreate.png)  
 
 
 ### 9. Создайте общую volume-group на этих двух PV.  
