@@ -56,7 +56,7 @@ RAID1 создаю командой **_mdadm --create --verbose /dev/md1 -l 1 -n
 
 ### 7. Соберите mdadm RAID0 на второй паре маленьких разделов.  
 
-RAID0 создаю командой *_mdadm --create --verbose /dev/md0 -l 0 -n 2 /dev/sd{a2,b2}_*  
+RAID0 создаю командой **_mdadm --create --verbose /dev/md0 -l 0 -n 2 /dev/sd{a2,b2}_**  
 
 Результат:  
 
@@ -76,4 +76,12 @@ RAID0 создаю командой *_mdadm --create --verbose /dev/md0 -l 0 -n 
 
 ### 9. Создайте общую volume-group на этих двух PV.  
 
+**_vgcreate vg01 /dev/md1 /dev/md0_**
+*_File descriptor 9 (pipe:[15694]) leaked on vgcreate invocation. Parent PID 1309: bash_*
+*_File descriptor 11 (pipe:[15695]) leaked on vgcreate invocation. Parent PID 1309: bash_*
+*_  Volume group "vg01" successfully created_*
+
+![pgcreate](pgcreate.png)  
+
+### 10. Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.  
 
