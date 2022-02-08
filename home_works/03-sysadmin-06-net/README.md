@@ -16,7 +16,10 @@
 
 ### 2. Повторите задание 1 в браузере, используя консоль разработчика F12.  
 
-**_Код ответа 307_**  
+**_Код ответа 301_**  
+
+**_Дольше всего выполнялась загрузка шрифта : https://cdn.sstatic.net/Fonts/source-sans-pro/source-sans-pro-bold-webfont.woff?v=f52ccc0bbce9_**  
+
 
 ![stackoverflow_head](stackoverflow_head.png)  
 
