@@ -16,3 +16,8 @@
 
 ### 2. Повторите задание 1 в браузере, используя консоль разработчика F12.  
 
+**_Код ответа 307_**  
+
+![stackoverflow_head](stackoverflow_head.png)  
+
+![stackoverflow_network](stackoverflow_network.png)  
