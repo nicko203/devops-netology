@@ -18,9 +18,34 @@
 
 **_Код ответа 301_**  
 
-**_Дольше всего выполнялась загрузка шрифта : https://cdn.sstatic.net/Fonts/source-sans-pro/source-sans-pro-bold-webfont.woff?v=f52ccc0bbce9_**  
 
 
 ![stackoverflow_head](stackoverflow_head.png)  
 
+
+**_Дольше всего выполнялась загрузка шрифта : https://cdn.sstatic.net/Fonts/source-sans-pro/source-sans-pro-bold-webfont.woff?v=f52ccc0bbce9_**  
+
 ![stackoverflow_network](stackoverflow_network.png)  
+
+
+### 3. Какой IP адрес у вас в интернете?  
+
+![myINetIP](myINetIP.png)  
+
+
+### 4. Какому провайдеру принадлежит ваш IP адрес? Какой автономной системе AS? Воспользуйтесь утилитой whois.  
+
+Команда *_$ whois  195.184.79.202_*  
+...
+**_route:          195.184.78.0/23_**  
+**_descr:          Courier Plus ISP Ltd._**  
+**_origin:         AS44172_**  
+**_mnt-by:         MNT-COURIER-PLUS_**  
+
+### 5. Через какие сети проходит пакет, отправленный с вашего компьютера на адрес 8.8.8.8? Через какие AS? Воспользуйтесь утилитой traceroute.  
+
+![traceroute8888](traceroute8888.png)  
+
+
+### 6. Повторите задание 5 в утилите mtr. На каком участке наибольшая задержка - delay?  
+
