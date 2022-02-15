@@ -65,10 +65,10 @@ mode=6 (balance-alb)
 *_modprobe bonding_*  
 
 Делаю агрегацию интерфейсов (будет действовать до перезагрузки):  
-*_ip link add bond0 type bond mode 802.3ad_*
-*_ip link set eth0 master bond0_*
-*_ip link set eth1 master bond0_*
-
+*_ip link add bond0 type bond mode 802.3ad_*  
+*_ip link set eth0 master bond0_*  
+*_ip link set eth1 master bond0_*  
+  
 ### 5. Сколько IP адресов в сети с маской /29 ? Сколько /29 подсетей можно получить из сети с маской /24. Приведите несколько примеров /29 подсетей внутри сети 10.10.10.0/24.  
 
 В сети /29 используется 8 IP-адресов, для адресации хостов можно использовать 6 IP-адресов.  
