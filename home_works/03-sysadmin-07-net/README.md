@@ -22,15 +22,15 @@ Link Layer Discovery Protocol (LLDP) — протокол канального �
 
 Настройка в среде Debian 11:
 
-Загружаю модуль 8021q:
-*_modprobe 8021q_*
+Загружаю модуль 8021q:  
+*_modprobe 8021q_*  
 
 Добавляю в *_/etc/network/interfaces_* блок vlan:  
 
-![vlan_iface.png](vlan_iface.png)
+![vlan_iface.png](vlan_iface.png)  
 
 Рестартую сеть:  
-*_/etc/init.d/networking restart_*
+*_/etc/init.d/networking restart_*  
 
 Конфигурация интерфейсов:  
 
