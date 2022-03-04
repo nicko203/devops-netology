@@ -69,3 +69,10 @@ IdentityFile ~/.ssh/id_rsa_imp
 
 ![ssh_connect_3.png](ssh_connect_3.png)  
 
+## 7. Соберите дамп трафика утилитой tcpdump в формате pcap, 100 пакетов. Откройте файл pcap в Wireshark.  
+ 
+*_tcpdump -c 100 -n -w ./_tcpdump.log_*  
+
+Просмотр дампа в wireshark:
+
+![wireshark.png](wireshark.png)  
