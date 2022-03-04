@@ -14,10 +14,10 @@
 Создаю каталог для хранения сертификатов:  
 *_mkdir -p /etc/apache2/ssl_*  
 
-Создаю самоподписанный сертификат для сайта *test.ru*:  
+Создаю самоподписанный сертификат для сайта _test.ru_:  
 *_openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/test.ru.key -out /etc/apache2/ssl/test.ru.crt_*  
 
-В качестве Common Name указываю *test.ru*  
+В качестве Common Name указываю _test.ru_  
 
 
 
