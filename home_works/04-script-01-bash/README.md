@@ -110,5 +110,24 @@ cat ./state.log
 
 ### Ваш скрипт:
 ```bash
-???
+#!/usr//bin/bash 
+
+#ip=("192.168.5.108" "192.168.5.162" "192.168.5.2")
+ip=("10.36.0.22" "10.36.0.23" "10.36.0.24")
+
+port=80
+counter=5
+while (( 1 == 1))
+do
+  for i in ${ip[@]}
+    do
+      date1=date
+      curl -k -I http://$i:$port
+      if (($? != 0))
+         then
+             echo "$(date "+%d-%m-%Y %H:%M:%S")  Host $i is unavailable" >> error.log
+             exit 1
+      fi
+    done
+done
 ```
