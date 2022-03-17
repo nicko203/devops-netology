@@ -19,4 +19,12 @@ ufw enable
 ![ufw_status](ufw_status.png)  
 
 
-### 3. 
+### 3. Установите hashicorp vault ( https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault ).  
+
+Доступ к репозиторию закрыт. Через VPN выкачал бинарник для своей платформы. 
+```vault -v
+Vault v1.9.4 (fcbe948b2542a13ee8036ad07dd8ebf8554f56cb)
+```
+
+### 4. Cоздайте центр сертификации по инструкции ( https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management ) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).  
+
