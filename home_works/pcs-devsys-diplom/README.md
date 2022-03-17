@@ -21,8 +21,10 @@ ufw enable
 
 ### 3. Установите hashicorp vault ( https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault ).  
 
-Доступ к репозиторию закрыт. Через VPN выкачал бинарник для своей платформы. 
-```vault -v
+Доступ к репозиторию закрыт. Через VPN выкачал бинарник для своей платформы.  
+
+*_vault -v_*
+```
 Vault v1.9.4 (fcbe948b2542a13ee8036ad07dd8ebf8554f56cb)
 ```
 
