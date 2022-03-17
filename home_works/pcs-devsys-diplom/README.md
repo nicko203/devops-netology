@@ -6,11 +6,11 @@
 
 Последовательность команд для установки и настройки ufw:  
 
-`apt install ufw`  
-`ufw allow 22`  
-`ufw allow 443`  
-`ufw disable`  
-`ufw enable`  
+```apt install ufw  
+ufw allow 22  
+ufw allow 443  
+ufw disable  
+ufw enable```  
 
 
 Результат настройки:  
@@ -18,3 +18,4 @@
 ![ufw_status](ufw_status.png)  
 
 
+### 3. 
