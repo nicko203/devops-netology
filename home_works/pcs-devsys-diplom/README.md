@@ -10,7 +10,8 @@
 ufw allow 22  
 ufw allow 443  
 ufw disable  
-ufw enable```  
+ufw enable
+```  
 
 
 Результат настройки:  
