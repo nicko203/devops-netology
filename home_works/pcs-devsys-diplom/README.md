@@ -98,11 +98,17 @@ vault write pki_int/intermediate/set-signed certificate=@intermediate.cert.pem
 vault write pki_int/roles/test-dot-ru  allowed_domains="test.ru" allow_subdomains=true  max_ttl="8640h"
 ```
 
-**_Создание сертификата:_**  
+**_Создание сертификата:_**  (nginx уже установил)  
 ```
-vault write pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h"
+vault write -format=json  pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h" > /etc/nginx/ssl/first.test.ru.all
 ```  
 
+**_Разбор сертификата на составляющие:_**  
+```
+cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.private_key > /etc/nginx/ssl/first.test.ru.key
+cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.certificate >  /etc/nginx/ssl/first.test.ru.cert
+cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.issuing_ca >>  /etc/nginx/ssl/first.test.ru.cert
+```
 ### 5. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.  
 
 Установил корневой сертификат в Доверенные корневые центры сертификации.  
@@ -115,4 +121,39 @@ vault write pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h"
 
 Файл конфигурации nginx **_first.test.ru_**:
 ```
+server {
+    access_log /var/log/nginx/first.test.ru.log;
+    #access_log off;
+    error_log /var/log/nginx/first.test.ru.error.log;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    listen 443 ssl;
+    server_name first.test.ru;
+
+    location / {
+        error_page 404 /404.html;
+        location = /404.html 
+    {
+                root /var/www/html;
+                internal;
+        }
+    }
+
+    ssl_certificate /etc/nginx/ssl/first.test.ru.cert;
+    ssl_certificate_key /etc/nginx/ssl/first.test.ru.key;
+
+    ssl_session_cache shared:le_nginx_SSL:1m;
+    ssl_session_timeout 1440m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS";
+
+}
+
 ```
+
+### 8. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.  
+
+![first_test_ru](first_test_ru.jpg)  
