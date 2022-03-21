@@ -157,3 +157,24 @@ server {
 ### 8. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.  
 
 ![first_test_ru](first_test_ru.jpg)  
+
+### 9. Создайте скрипт, который будет генерировать новый сертификат в vault:  
+
+```
+#!/usr/bin/bash
+
+vault write -format=json  pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h" > /etc/nginx/ssl/first.test.ru.all
+cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.private_key > /etc/nginx/ssl/first.test.ru.key
+cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.certificate >  /etc/nginx/ssl/first.test.ru.cert
+cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.issuing_ca >>  /etc/nginx/ssl/first.test.ru.cert
+systemctl restart nginxr
+```
+
+### 10. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.  
+
+Скрипт будет выполняться в 03:00 первого числа каждого месяца:  
+```
+crontab -l
+# m h  dom mon dow   command
+0 3 1 * * /root/cert_create.sh
+```
