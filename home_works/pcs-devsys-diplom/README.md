@@ -93,3 +93,13 @@ vault write -format=json pki/root/sign-intermediate csr=@pki_intermediate.csr fo
 vault write pki_int/intermediate/set-signed certificate=@intermediate.cert.pem
 ```  
 
+**_Создаю роль:_**  
+```
+vault write pki_int/roles/test-dot-ru  allowed_domains="test.ru" allow_subdomains=true  max_ttl="720h"
+```
+
+**_Создание сертификата:_**  
+```
+vault write pki_int/issue/test-dot-ru common_name="test.ru" ttl="720h"
+```  
+
