@@ -88,4 +88,8 @@ vault write -format=json pki_int/intermediate/generate/internal common_name="tes
 vault write -format=json pki/root/sign-intermediate csr=@pki_intermediate.csr format=pem_bundle ttl="720h" | jq -r '.data.certificate' > intermediate.cert.pem
 ```  
 
-5. 
+5. Как только CSR будет подписан и корневой центр сертификации вернет сертификат, его можно будет импортировать обратно в Хранилище:  
+```
+vault write pki_int/intermediate/set-signed certificate=@intermediate.cert.pem
+```  
+
