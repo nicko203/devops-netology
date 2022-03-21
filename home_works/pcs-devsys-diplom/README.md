@@ -72,3 +72,10 @@ vault write pki/config/urls issuing_certificates="$VAULT_ADDR/v1/pki/ca" crl_dis
 ```
 vault secrets enable -path=pki_int pki
 ```  
+
+2. Настраиваю механизм pki_int секретов на выдачу сертификатов с максимальным временем работы (TTL) один месяц ( 720 часов ):  
+```
+vault secrets tune -max-lease-ttl=720h pki_int
+```  
+
+3. 
