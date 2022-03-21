@@ -31,11 +31,13 @@ Vault v1.9.4 (fcbe948b2542a13ee8036ad07dd8ebf8554f56cb)
 ### 4. Cоздайте центр сертификации по инструкции ( https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management ) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).  
 
 Запускаю в дополнительном терминале  vault-сервер:  
-```vault server -dev -dev-root-token-id root
+```
+vault server -dev -dev-root-token-id root
 ```
 
 Экспортирую переменные окружения:  
-```export VAULT_ADDR=http://127.0.0.1:8200
+```
+export VAULT_ADDR=http://127.0.0.1:8200
 export VAULT_TOKEN=root
 ```  
 
@@ -43,7 +45,8 @@ export VAULT_TOKEN=root
 
 1. Включаю механизм pki-секретов по пути  pki:
 
-```vault secrets enable pki
+```
+vault secrets enable pki
 ```
 
 2. Настраиваю  механизм pki secrets engine на выдачу сертификатов с максимальным временем работы (TTL) один месяц ( 720 часов):  
