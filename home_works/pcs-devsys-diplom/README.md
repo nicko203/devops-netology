@@ -68,3 +68,7 @@ vault write pki/config/urls issuing_certificates="$VAULT_ADDR/v1/pki/ca" crl_dis
 
 **_Генерирую промежуточный сертификат:_**  
 
+1. Включаю механизм pki секретов по пути pki_int:  
+```
+vault secrets enable -path=pki_int pki
+```  
