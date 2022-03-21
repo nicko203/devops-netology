@@ -60,4 +60,11 @@ vault secrets tune -max-lease-ttl=720h pki
 vault write -field=certificate pki/root/generate/internal common_name="test.ru" ttl=720h > CA_cert.crt
 ```  
 
-4. 
+4. Настраиваю URL-адреса CA и CRL:
+```
+vault write pki/config/urls issuing_certificates="$VAULT_ADDR/v1/pki/ca" crl_distribution_points="$VAULT_ADDR/v1/pki/crl"
+```  
+
+
+*_Генерирую промежуточный сертификат:_*  
+
