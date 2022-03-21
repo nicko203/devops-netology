@@ -83,4 +83,9 @@ vault secrets tune -max-lease-ttl=720h pki_int
 vault write -format=json pki_int/intermediate/generate/internal common_name="test.ru Intermediate Authority" | jq -r '.data.csr' > pki_intermediate.csr
 ```  
 
-4. 
+4. Подписываю промежуточный сертификат закрытым ключом корневого центра сертификации и сохраняю сгенерированный сертификат как intermediate.cert.pem:  
+```
+vault write -format=json pki/root/sign-intermediate csr=@pki_intermediate.csr format=pem_bundle ttl="720h" | jq -r '.data.certificate' > intermediate.cert.pem
+```  
+
+5. 
