@@ -103,3 +103,16 @@ vault write pki_int/roles/test-dot-ru  allowed_domains="test.ru" allow_subdomain
 vault write pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h"
 ```  
 
+### 5. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.  
+
+Установил корневой сертификат в Доверенные корневые центры сертификации.  
+
+### 6. Установите nginx.  
+
+**_apt-get install nginx_**  
+
+### 7. По инструкции (ссылка) настройте nginx на https, используя ранее подготовленный сертификат.  
+
+Файл конфигурации nginx **_first.test.ru_**:
+```
+```
