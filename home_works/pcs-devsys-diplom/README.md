@@ -41,7 +41,7 @@ export VAULT_ADDR=http://127.0.0.1:8200
 export VAULT_TOKEN=root
 ```  
 
-*_Генерирую корневой сертификат:_*  
+*__Генерирую корневой сертификат:__*  
 
 1. Включаю механизм pki-секретов по пути  pki:
 
@@ -66,5 +66,5 @@ vault write pki/config/urls issuing_certificates="$VAULT_ADDR/v1/pki/ca" crl_dis
 ```  
 
 
-*_Генерирую промежуточный сертификат:_*  
+**_Генерирую промежуточный сертификат:_**  
 
