@@ -55,3 +55,9 @@ vault secrets tune -max-lease-ttl=720h pki
 ```  
 
 
+3. Создаю корневой сертификат и сохраняю  его в файле CA_cert.crt:  
+```
+vault write -field=certificate pki/root/generate/internal common_name="test.ru" ttl=720h > CA_cert.crt
+```  
+
+4. 
