@@ -78,4 +78,9 @@ vault secrets enable -path=pki_int pki
 vault secrets tune -max-lease-ttl=720h pki_int
 ```  
 
-3. 
+3. Генерирую промежуточный сертификат  и сохраняю запрос CSR как pki_intermediate.csr:  
+```
+vault write -format=json pki_int/intermediate/generate/internal common_name="test.ru Intermediate Authority" | jq -r '.data.csr' > pki_intermediate.csr
+```  
+
+4. 
