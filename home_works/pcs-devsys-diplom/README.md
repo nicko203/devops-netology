@@ -49,15 +49,15 @@ export VAULT_TOKEN=root
 vault secrets enable pki
 ```
 
-2. Настраиваю  механизм pki secrets engine на выдачу сертификатов с максимальным временем работы (TTL) один месяц ( 720 часов):  
+2. Настраиваю  механизм pki secrets engine на выдачу сертификатов с максимальным временем работы (TTL) один год ( 8640 часов):  
 ```
-vault secrets tune -max-lease-ttl=720h pki
+vault secrets tune -max-lease-ttl=8640h pki
 ```  
 
 
 3. Создаю корневой сертификат и сохраняю  его в файле CA_cert.crt:  
 ```
-vault write -field=certificate pki/root/generate/internal common_name="test.ru" ttl=720h > CA_cert.crt
+vault write -field=certificate pki/root/generate/internal common_name="test.ru" ttl=8640h > CA_cert.crt
 ```  
 
 4. Настраиваю URL-адреса CA и CRL:
@@ -73,9 +73,9 @@ vault write pki/config/urls issuing_certificates="$VAULT_ADDR/v1/pki/ca" crl_dis
 vault secrets enable -path=pki_int pki
 ```  
 
-2. Настраиваю механизм pki_int секретов на выдачу сертификатов с максимальным временем работы (TTL) один месяц ( 720 часов ):  
+2. Настраиваю механизм pki_int секретов на выдачу сертификатов с максимальным временем работы (TTL) один год ( 8640 часов ):  
 ```
-vault secrets tune -max-lease-ttl=720h pki_int
+vault secrets tune -max-lease-ttl=8640h pki_int
 ```  
 
 3. Генерирую промежуточный сертификат  и сохраняю запрос CSR как pki_intermediate.csr:  
@@ -85,7 +85,7 @@ vault write -format=json pki_int/intermediate/generate/internal common_name="tes
 
 4. Подписываю промежуточный сертификат закрытым ключом корневого центра сертификации и сохраняю сгенерированный сертификат как intermediate.cert.pem:  
 ```
-vault write -format=json pki/root/sign-intermediate csr=@pki_intermediate.csr format=pem_bundle ttl="720h" | jq -r '.data.certificate' > intermediate.cert.pem
+vault write -format=json pki/root/sign-intermediate csr=@pki_intermediate.csr format=pem_bundle ttl="86400h" | jq -r '.data.certificate' > intermediate.cert.pem
 ```  
 
 5. Как только CSR будет подписан и корневой центр сертификации вернет сертификат, его можно будет импортировать обратно в Хранилище:  
@@ -95,11 +95,11 @@ vault write pki_int/intermediate/set-signed certificate=@intermediate.cert.pem
 
 **_Создаю роль:_**  
 ```
-vault write pki_int/roles/test-dot-ru  allowed_domains="test.ru" allow_subdomains=true  max_ttl="720h"
+vault write pki_int/roles/test-dot-ru  allowed_domains="test.ru" allow_subdomains=true  max_ttl="8640h"
 ```
 
 **_Создание сертификата:_**  
 ```
-vault write pki_int/issue/test-dot-ru common_name="test.ru" ttl="720h"
+vault write pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h"
 ```  
 
