@@ -163,11 +163,13 @@ server {
 ```
 #!/usr/bin/bash
 
+export VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_TOKEN=root
+
 vault write -format=json  pki_int/issue/test-dot-ru common_name="first.test.ru" ttl="720h" > /etc/nginx/ssl/first.test.ru.all
 cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.private_key > /etc/nginx/ssl/first.test.ru.key
 cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.certificate >  /etc/nginx/ssl/first.test.ru.cert
 cat /etc/nginx/ssl/first.test.ru.all  | jq -r .data.issuing_ca >>  /etc/nginx/ssl/first.test.ru.cert
-systemctl restart nginxr
 ```
 
 ### 10. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.  
@@ -178,3 +180,22 @@ crontab -l
 # m h  dom mon dow   command
 0 3 1 * * /root/cert_create.sh
 ```
+
+### 10-a. Устранение замечаний.
+
+В скрипт добавил строки:
+```
+export VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_TOKEN=root
+```
+
+Для проверки настроил время выполнения скрипта каждые 5 минут:
+```
+# m h  dom mon dow   command
+*/5 * * * * /root/cert_create.sh
+```
+
+Проверяю выдачу сертификата через браузер:
+
+![first_test_ru](first_test_ru_3.jpg)  
+
