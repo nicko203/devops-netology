@@ -37,12 +37,35 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/env python3
+
+import os
+
+sRepPath = "~/EDU/NETOLOGY/DevOps/devops-netology/home_works/"
+
+bash_command = ["cd "+sRepPath, "git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+
+print("\n")
+
+is_change = False
+for result in result_os.split('\n'):
+    if result.find('изменено:') != -1:
+        prepare_result = result.replace('\tизменено:   ', '').strip()
+        print(sRepPath+prepare_result)
+
+print("\n")
 ```
 
 ### Вывод скрипта при запуске при тестировании:
-```
-???
+``
+$ ./script_2.py
+
+
+~/EDU/NETOLOGY/DevOps/devops-netology/home_works/04-script-01-bash/README.md
+~/EDU/NETOLOGY/DevOps/devops-netology/home_works/04-script-02-py/README.md
+
+
 ```
 
 ## Обязательная задача 3
