@@ -58,13 +58,11 @@ print("\n")
 ```
 
 ### Вывод скрипта при запуске при тестировании:
-``
+```
 $ ./script_2.py
-
 
 ~/EDU/NETOLOGY/DevOps/devops-netology/home_works/04-script-01-bash/README.md
 ~/EDU/NETOLOGY/DevOps/devops-netology/home_works/04-script-02-py/README.md
-
 
 ```
 
