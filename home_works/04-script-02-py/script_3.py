@@ -10,7 +10,6 @@ result_os = os.popen(' && '.join(bash_command)).read()
 
 print("\n")
 
-is_change = False
 for result in result_os.split('\n'):
     if result.find('изменено:') != -1:
         prepare_result = result.replace('\tизменено:   ', '').strip()
