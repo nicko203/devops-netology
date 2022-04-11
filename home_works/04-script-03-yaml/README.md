@@ -86,7 +86,7 @@ with open(yServicesFile, "w") as y_data:
 ```
 
 ### Вывод скрипта при запуске при тестировании:
-![script_2](script_2.py)
+![script_2](script_2.png)
 
 ### json-файл(ы), который(е) записал ваш скрипт:
 ```json
