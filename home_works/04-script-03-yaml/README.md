@@ -32,7 +32,7 @@
 
 Корректный файл: 
 ```
-    { "info" : "Sample JSON output from our service\",
+    { "info" : "Sample JSON output from our service",
         "elements" :[
             { "name" : "first",
             "type" : "server",
