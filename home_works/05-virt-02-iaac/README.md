@@ -22,7 +22,7 @@
 - VirtualBox  
 - Vagrant  
 
-![vagrant_VBox_ver.jpg](vagrant_VBox_ver.jpg.py)  
+![vagrant_VBox_ver.jpg](vagrant_VBox_ver.jpg)  
 
 - Ansible  
 
