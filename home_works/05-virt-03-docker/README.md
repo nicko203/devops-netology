@@ -63,6 +63,11 @@ mkdir -p ~/netology/nicko-nginx-docker
 touch ~/netology/nicko-nginx-docker/index.html
 ```
 
+- Создаю Dockerfile:  
+```bash
+touch ~/netology/nicko-nginx-docker/Dockerfile
+```
+
 ### Задача 2  
 
 Посмотрите на сценарий ниже и ответьте на вопрос: "Подходит ли в этом сценарии использование Docker контейнеров или лучше подойдет виртуальная машина, физическая машина? Может быть возможны разные варианты?"
