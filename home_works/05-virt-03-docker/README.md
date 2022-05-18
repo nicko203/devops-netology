@@ -20,6 +20,35 @@ Hey, Netology
 ```
 Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.  
 
+### Решение.  
+На сервер с Debian 11 устанавливаю Docker:  
+
+- Обновление пакетов:  
+```bash
+apt-get update & apt-get upgrade
+```  
+
+- Установка пакетов, позволяющих работать apt через HTTPS:  
+```bash
+ apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+```
+
+- Добавление GPG ключа:  
+```bash
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+```
+
+- Подключение стабильного (stable) репозитория docker:  
+```bash
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+```
+
+- Установка Docker:  
+```bash
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io
+```  
+
 ### Задача 2  
 
 Посмотрите на сценарий ниже и ответьте на вопрос: "Подходит ли в этом сценарии использование Docker контейнеров или лучше подойдет виртуальная машина, физическая машина? Может быть возможны разные варианты?"
