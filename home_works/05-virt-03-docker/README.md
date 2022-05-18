@@ -49,6 +49,20 @@ apt-get update
 apt-get install docker-ce docker-ce-cli containerd.io
 ```  
 
+- Получаю официальный образ nginx:  
+```bash
+docker pull nginx
+```
+- Создаю рабочий каталог:  
+```bash
+mkdir -p ~/netology/nicko-nginx-docker
+```
+
+- Создаю индексный файл _*index.html*_:  
+```bash
+touch ~/netology/nicko-nginx-docker/index.html
+```
+
 ### Задача 2  
 
 Посмотрите на сценарий ниже и ответьте на вопрос: "Подходит ли в этом сценарии использование Docker контейнеров или лучше подойдет виртуальная машина, физическая машина? Может быть возможны разные варианты?"
