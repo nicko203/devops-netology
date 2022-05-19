@@ -25,47 +25,47 @@ Hey, Netology
 
 - Обновление пакетов:  
 ```bash
-apt-get update & apt-get upgrade
+# apt-get update & apt-get upgrade
 ```  
 
 - Установка пакетов, позволяющих работать apt через HTTPS:  
 ```bash
- apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+# apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 ```
 
 - Добавление GPG ключа:  
 ```bash
-curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+# curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 ```
 
 - Подключение стабильного (stable) репозитория docker:  
 ```bash
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 ```
 
 - Установка Docker:  
 ```bash
-apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io
+# apt-get update
+# apt-get install docker-ce docker-ce-cli containerd.io
 ```  
 
 - Получаю официальный образ nginx:  
 ```bash
-docker pull nginx
+# docker pull nginx
 ```
 - Создаю рабочий каталог:  
 ```bash
-mkdir -p ~/netology/nicko-nginx-docker
+# mkdir -p ~/netology/nicko-nginx-docker
 ```
 
 - Создаю индексный файл _*index.html*_:  
 ```bash
-touch ~/netology/nicko-nginx-docker/index.html
+# touch ~/netology/nicko-nginx-docker/index.html
 ```
 
 - Создаю Dockerfile:  
 ```bash
-touch ~/netology/nicko-nginx-docker/Dockerfile
+# touch ~/netology/nicko-nginx-docker/Dockerfile
 ```
 - В Dockerfile вставляю следующие команды:  
 Первой командой *_FROM_*  создаю собственный образ, используя базовый образ.  Это вытянет nginx-образ на локальную машину, а затем создаст собственный образ поверх него.  
@@ -77,7 +77,7 @@ COPY ./index.html /usr/share/nginx/html/index.html
 
 - Собираю собственный образ:  
 ```bash
-docker build -t nicko-nginx-docker .
+# docker build -t nicko-nginx-docker .
 ```
 Вывод команды:  
 ```
@@ -100,15 +100,15 @@ hello-world          latest    feb5d9fea6a5   7 months ago         13.3kB
 
 Стартую контейнер:  
 ```bash
-docker run -d -p 8888:80 --name web nicko-nginx-docker
+# docker run -d -p 8888:80 --name web nicko-nginx-docker
 741dbeb8f22d62d470f12ab5c2ea894fd524e8173504de7d0f70e74827dd8d92
 ```
 Проверяю:  
 ```bash
-docker ps
+# docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS              PORTS                                   NAMES
 741dbeb8f22d   nicko-nginx-docker   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8888->80/tcp, :::8888->80/tcp   web
-```
+```  
 Проверяю в браузере:  
 ![nicko-nginx-docker](nicko-nginx-docker.jpg)
 
