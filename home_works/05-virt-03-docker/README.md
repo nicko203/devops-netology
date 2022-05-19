@@ -137,7 +137,7 @@ fd95118eade9: Pushed
 nicko-nginx-docker: digest: sha256:44199922035dff2ed936d519550b8d7f72fe4aeee892364a6cb84bf2f65a9c87 size: 1777
 ```
   
-![nicko-nginx-docker_pushed](nicko-nginx-docker_pushed.png)  
+![nicko-nginx-docker_pushed](nicko-nginx-docker-pushed.png)  
   
 
 ### Задача 2  
