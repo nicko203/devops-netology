@@ -98,7 +98,7 @@ nginx                latest    de2543b9436b   29 hours ago         142MB
 hello-world          latest    feb5d9fea6a5   7 months ago         13.3kB
 ```
 
-Стартую контейнер:  
+- Стартую контейнер:  
 ```bash
 # docker run -d -p 8888:80 --name web nicko-nginx-docker
 741dbeb8f22d62d470f12ab5c2ea894fd524e8173504de7d0f70e74827dd8d92
@@ -110,7 +110,35 @@ CONTAINER ID   IMAGE                COMMAND                  CREATED            
 741dbeb8f22d   nicko-nginx-docker   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8888->80/tcp, :::8888->80/tcp   web
 ```  
 Проверяю в браузере:  
-![nicko-nginx-docker](nicko-nginx-docker.jpg)
+![nicko-nginx-docker](nicko-nginx-docker.jpg)  
+  
+  
+- Размещаю собственный образ nginx в репозитории docker:  
+Логинюсь:  
+```bash
+# docker login
+```
+   
+Устанавливаю tag:  
+```bash
+# docker tag nicko-nginx-docker nicko2003/devops-netology:nicko-nginx-docker
+```  
+Загружаю образ в репозиторий:  
+```bash
+# docker push nicko2003/devops-netology:nicko-nginx-docker
+The push refers to repository [docker.io/nicko2003/devops-netology]
+ca5fc0181534: Pushed 
+a059c9abe376: Pushed 
+09be960dcde4: Pushed 
+18be1897f940: Pushed 
+dfe7577521f0: Pushed 
+d253f69cb991: Pushed 
+fd95118eade9: Pushed 
+nicko-nginx-docker: digest: sha256:44199922035dff2ed936d519550b8d7f72fe4aeee892364a6cb84bf2f65a9c87 size: 1777
+```
+  
+![nicko-nginx-docker_pushed](nicko-nginx-docker_pushed.jpg)  
+  
 
 ### Задача 2  
 
