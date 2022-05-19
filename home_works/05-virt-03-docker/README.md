@@ -79,7 +79,38 @@ COPY ./index.html /usr/share/nginx/html/index.html
 ```bash
 docker build -t nicko-nginx-docker .
 ```
+Вывод команды:  
+```
+Sending build context to Docker daemon  3.072kB
+Step 1/2 : FROM nginx:latest
+ ---> de2543b9436b
+Step 2/2 : COPY ./index.html /usr/share/nginx/html/index.html
+ ---> a70f2e4ed111
+Successfully built a70f2e4ed111
+Successfully tagged nicko-nginx-docker:latest
+```
+Образ собран:  
+```bash
+# docker images
+REPOSITORY           TAG       IMAGE ID       CREATED              SIZE
+nicko-nginx-docker   latest    39524532c421   3 minutes ago        142MB
+nginx                latest    de2543b9436b   29 hours ago         142MB
+hello-world          latest    feb5d9fea6a5   7 months ago         13.3kB
+```
 
+Стартую контейнер:  
+```bash
+docker run -d -p 8888:80 --name web nicko-nginx-docker
+741dbeb8f22d62d470f12ab5c2ea894fd524e8173504de7d0f70e74827dd8d92
+```
+Проверяю:  
+```bash
+docker ps
+CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS              PORTS                                   NAMES
+741dbeb8f22d   nicko-nginx-docker   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8888->80/tcp, :::8888->80/tcp   web
+```
+Проверяю в браузере:  
+![nicko-nginx-docker](nicko-nginx-docker.jpg)
 
 ### Задача 2  
 
