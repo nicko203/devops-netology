@@ -67,6 +67,14 @@ touch ~/netology/nicko-nginx-docker/index.html
 ```bash
 touch ~/netology/nicko-nginx-docker/Dockerfile
 ```
+- В Dockerfile вставляю следующие команды:  
+Первой командой *_FROM_*  создаю собственный образ, используя базовый образ.  Это вытянет nginx-образ на локальную машину, а затем создаст собственный образ поверх него.  
+Команда COPY помешает файл index.html в /usr/share/nginx/html каталог внутри контейнера и перезаписывает файл по умолчанию index.html , предоставленный nginx-образом.  
+```
+FROM nginx
+COPY ./index.html /usr/share/nginx/html/index.html
+```
+
 
 ### Задача 2  
 
