@@ -20,6 +20,9 @@ Hey, Netology
 ```
 Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.  
 
+### Ответ:  
+https://hub.docker.com/repository/docker/nicko2003/devops-netology  
+
 ### Решение.  
 На сервер с Debian 11 устанавливаю Docker:  
 
