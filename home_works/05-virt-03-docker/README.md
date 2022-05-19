@@ -75,6 +75,11 @@ FROM nginx
 COPY ./index.html /usr/share/nginx/html/index.html
 ```
 
+- Собираю собственный образ:  
+```bash
+docker build -t nicko-nginx-docker .
+```
+
 
 ### Задача 2  
 
