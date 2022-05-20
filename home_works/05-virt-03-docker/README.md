@@ -193,3 +193,51 @@ Docker не подходит в данном случае, т.к. при пот�
 - Подключитесь к первому контейнеру с помощью docker exec и создайте текстовый файл любого содержания в /data;  
 - Добавьте еще один файл в папку /data на хостовой машине;  
 - Подключитесь во второй контейнер и отобразите листинг и содержание файлов в /data контейнера.  
+
+### Решение.  
+ - Запускаю контейнер с Centos:  
+```bash
+# docker run -v ~/netology/docker_volume/data:/data -dt --name centos_vol centos
+59a7d461be3d8975869e86f368a876471539f216bf611acb5e0a39e6893256ca
+```
+  
+ - Запускаю контейнер с Debian:  
+```bash
+# docker run -v ~/netology/docker_volume/data:/data -dt --name debian_vol debian
+Unable to find image 'debian:latest' locally
+latest: Pulling from library/debian
+67e8aa6c8bbc: Pull complete 
+Digest: sha256:6137c67e2009e881526386c42ba99b3657e4f92f546814a33d35b14e60579777
+Status: Downloaded newer image for debian:latest
+eaee1f76e034baed0bce6f0cd890a1a07513067828b0de6439562101ec2bd559
+
+```
+  
+Контейнеры запущены: 
+```bash
+# docker ps 
+CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS              PORTS                                   NAMES
+eaee1f76e034   debian               "bash"                   About a minute ago   Up About a minute                                           debian_vol
+59a7d461be3d   centos               "/bin/bash"              2 minutes ago        Up 2 minutes                                                centos_vol
+741dbeb8f22d   nicko-nginx-docker   "/docker-entrypoint.…"   30 hours ago         Up 30 hours         0.0.0.0:8888->80/tcp, :::8888->80/tcp   web
+```
+
+- Подключаюсь к первому контейнеру и создаю текстовый файл:  
+```bash
+# docker exec -it centos_vol /bin/bash 
+[root@59a7d461be3d /]# echo "Example1" > /data/Example1.txt
+```
+  
+- Добавляю текстовый файл на хост-машине:  
+```bash
+# echo "Example2" > ~/netology/docker_volume/data/Example2.txt
+```
+  
+- Подключаюсь ко второму контейнеру и проверяю наличие файлов:  
+```bash
+# docker exec -it debian_vol /bin/bash 
+root@eaee1f76e034:/# ls -l /data
+total 8
+-rw-r--r-- 1 root root 9 May 20 09:36 Example1.txt
+-rw-r--r-- 1 root root 9 May 20 09:39 Example2.txt
+```
