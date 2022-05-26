@@ -5,7 +5,13 @@
 Для получения зачета, вам необходимо предоставить: cкриншот страницы, как на слайде из презентации (слайд 37).  
 
 ### Ответ:  
+
+Скриншот консоли Yandex.Cloud:  
+
 ![packer_centos7_screenshot.png](packer_centos7_screenshot.png)  
+
+Процесс выполнения команды сборки образа _*packer build centos-7-base.json*_ :  
+
 ![packer_centos7.png](packer_centos7.png)  
 
 
