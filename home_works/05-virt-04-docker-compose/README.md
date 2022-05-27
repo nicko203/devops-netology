@@ -27,7 +27,7 @@ $ packer build centos-7-base.json
 
 ![terraform_apply_screenshot.png](terraform_apply_screenshot.png)  
 
-Процесс выполнения команды сборки образа  :  
+Процесс выполнения команды запуска ВМ :  
 ```bash
 $ terraform init
 $ terraform validate
@@ -44,3 +44,6 @@ $ terraform apply -auto-approve
 Для получения зачета, вам необходимо предоставить: скриншот работающего веб-интерфейса Grafana с текущими метриками.  
 
 ### Ответ:  
+
+![grafana_1.png](grafana_1.png)  
+
