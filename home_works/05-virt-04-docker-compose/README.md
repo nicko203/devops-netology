@@ -10,7 +10,10 @@
 
 ![packer_centos7_screenshot.png](packer_centos7_screenshot.png)  
 
-Процесс выполнения команды сборки образа _*packer build centos-7-base.json*_ :  
+Процесс выполнения команды сборки образа  :  
+```bash
+$ packer build centos-7-base.json
+```
 
 ![packer_centos7.png](packer_centos7.png)  
 
