@@ -23,6 +23,22 @@ $ packer build centos-7-base.json
 
 ### Ответ:  
 
+Скриншот консоли Yandex.Cloud:  
+
+![terraform_apply_screenshot.png](terraform_apply_screenshot.png)  
+
+Процесс выполнения команды сборки образа  :  
+```bash
+$ terraform init
+$ terraform validate
+$ terraform plan
+$ terraform apply -auto-approve
+```
+  
+![terraform_apply.png](terraform_apply.png)  
+
+
+
 ### Задача 3.  
 Создать ваш первый готовый к боевой эксплуатации компонент мониторинга, состоящий из стека микросервисов.  
 Для получения зачета, вам необходимо предоставить: скриншот работающего веб-интерфейса Grafana с текущими метриками.  
