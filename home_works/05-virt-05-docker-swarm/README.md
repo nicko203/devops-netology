@@ -25,6 +25,8 @@ Raft Consensus Algorithm - Raft — это протокол для реализ�
 ```
 docker node ls
 ```
+  
+![docker_node_ls.png](docker_node_ls.png)
 
 ## Задача 3
 
@@ -34,6 +36,8 @@ docker node ls
 ```
 docker service ls
 ```
+  
+![docker_service_ls.png](docker_service_ls.png)
 
 ## Задача 4 (*)
 
