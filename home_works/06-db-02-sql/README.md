@@ -12,7 +12,7 @@
 
 Приведите получившуюся команду или docker-compose манифест.
 
-docker-compose манифест docker-compose.yml:
+docker-compose манифест **_docker-compose.yml_**:
 ```
 version: '3.7'
 
@@ -52,7 +52,12 @@ postgresql-12-netology   "docker-entrypoint.s…"   postgres12          running 
 ## Задача 2
 
 В БД из задачи 1: 
-- создайте пользователя test-admin-user и БД test_db
+- создайте пользователя test-admin-user и БД test_db  
+
+```
+postgres=# CREATE USER "test-admin-user" WITH PASSWORD 'ChangeThisPassword';
+```
+
 - в БД test_db создайте таблицу orders и clients (спeцификация таблиц ниже)
 - предоставьте привилегии на все операции пользователю test-admin-user на таблицы БД test_db
 - создайте пользователя test-simple-user  
