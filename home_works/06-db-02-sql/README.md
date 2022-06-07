@@ -56,6 +56,7 @@ postgresql-12-netology   "docker-entrypoint.s…"   postgres12          running 
 
 ```
 postgres=# CREATE USER "test-admin-user" WITH PASSWORD 'ChangeThisPassword';
+postgres=# CREATE DATABASE test_db;
 ```
 
 - в БД test_db создайте таблицу orders и clients (спeцификация таблиц ниже)
