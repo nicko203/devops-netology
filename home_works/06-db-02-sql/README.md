@@ -193,9 +193,9 @@ test_db=# SELECT grantee, table_name, privilege_type FROM information_schema.tab
 
 ## Задача 3
 
-Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:
+Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:  
 
-Таблица orders
+Таблица orders  
 
 |Наименование|цена|
 |------------|----|
@@ -205,7 +205,13 @@ test_db=# SELECT grantee, table_name, privilege_type FROM information_schema.tab
 |Монитор| 7000|
 |Гитара| 4000|
 
-Таблица clients
+```
+test_db=# INSERT INTO orders (наименование, цена) VALUES('Шоколад', 10),('Принтер', 3000),('Книга', 500),('Монитор', 7000),('Гитара', 4000);
+INSERT 0 5
+
+```
+
+Таблица clients  
 
 |ФИО|Страна проживания|
 |------------|----|
@@ -215,11 +221,30 @@ test_db=# SELECT grantee, table_name, privilege_type FROM information_schema.tab
 |Ронни Джеймс Дио| Russia|
 |Ritchie Blackmore| Russia|
 
+```
+test_db=# INSERT INTO clients (фамилия, страна_проживания) VALUES('Иванов Иван Иванович', 'USA'),('Петров Петр Петрович', 'Canada'),('Иоганн Себастьян Бах', 'Japan'),('Ронни Джеймс Дио', 'Russia'),('Ritchie Blackmore', 'Russia');
+INSERT 0 5
+```
+
 Используя SQL синтаксис:
 - вычислите количество записей для каждой таблицы 
 - приведите в ответе:
     - запросы 
     - результаты их выполнения.
+```
+test_db=# SELECT COUNT(*) FROM orders;
+ count 
+-------
+     5
+(1 строка)
+```
+```
+test_db=# SELECT COUNT(*) FROM clients;
+ count 
+-------
+     5
+(1 строка)
+```
 
 ## Задача 4
 
@@ -237,7 +262,7 @@ test_db=# SELECT grantee, table_name, privilege_type FROM information_schema.tab
 
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.
  
-Подсказк - используйте директиву `UPDATE`.
+Подсказка - используйте директиву `UPDATE`.
 
 ## Задача 5
 
