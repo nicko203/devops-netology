@@ -338,6 +338,136 @@ test_db=# EXPLAIN SELECT c.*,o.наименование,o.цена FROM clients 
 
 ---
 
+## Решение:
+
+```bash
+# docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED        STATUS        PORTS                                       NAMES
+11a018c8a73a   postgres:12   "docker-entrypoint.s…"   19 hours ago   Up 19 hours   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgresql-12-netology
+```
+
+Захожу в оболочку контейнера:  
+```bash
+# docker exec -it postgresql-12-netology bash
+root@11a018c8a73a:/# 
+```
+
+Создаю дамп БД test_db:  
+```bash
+root@11a018c8a73a:/# pg_dump -h localhost -U postgres -d test_db > /var/lib/postgresql/backup/_test_db.sql
+root@11a018c8a73a:/# 
+root@11a018c8a73a:/# 
+root@11a018c8a73a:/# ls -l /var/lib/postgresql/backup/
+total 8
+-rw-r--r-- 1 root root 4796 Jun  8 03:53 _test_db.sql
+```
+
+Останавливаю контейнер:  
+```bash
+# docker-compose stop
+```
+
+Поднимаю новый пустой контейнер с PostgreSQL:  
+Создаю манифест для нового экземпляра:  
+```bash
+# cat ./pg-second.yml 
+version: '3.7'
+
+services:
+    postgres12:
+        image: postgres:12
+        container_name: postgresql-12-netology-new
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: test_db
+        volumes:
+            - ./data_new:/var/lib/postgresql/data
+            - ./backup:/var/lib/postgresql/backup
+        ports:
+            - "5432:5432"
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+                    memory: 4G
+```
+Запускаю контейнер:  
+```bash
+# docker-compose -f pg-second.yml up -d
+[+] Running 1/1
+ ⠿ Container postgresql-12-netology-new  Started       
+
+# docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS          PORTS                                       NAMES
+3216beda6fd0   postgres:12   "docker-entrypoint.s…"   3 minutes ago   Up 35 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgresql-12-netology-new
+```
+Захожу в консоль контейнера:  
+```bash
+# docker exec -it postgresql-12-netology-new bash
+```
+
+Загружаю БД из дампа:  
+```bash
+# psql -h localhost -U postgres test_db < /var/lib/postgresql/backup/_test_db.sql
+```
+
+Проверяю:
+```bash
+# psql -h localhost -U postgres
+psql (12.11 (Debian 12.11-1.pgdg110+1))
+Type "help" for help.
+
+postgres=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges   
+-----------+----------+----------+------------+------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 | 
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ test_db   | postgres | UTF8     | en_US.utf8 | en_US.utf8 | 
+(4 rows)
+
+postgres=# \c test_db
+You are now connected to database "test_db" as user "postgres".
+
+test_db=# \dt
+          List of relations
+ Schema |  Name   | Type  |  Owner   
+--------+---------+-------+----------
+ public | clients | table | postgres
+ public | orders  | table | postgres
+(2 rows)
+
+test_db=# \d clients
+                                  Table "public.clients"
+      Column       |  Type   | Collation | Nullable |               Default               
+-------------------+---------+-----------+----------+-------------------------------------
+ id                | integer |           | not null | nextval('clients_id_seq'::regclass)
+ фамилия           | text    |           |          | 
+ страна_проживания | text    |           |          | 
+ заказ             | integer |           |          | 
+Indexes:
+    "clients_pkey" PRIMARY KEY, btree (id)
+    "страна_проживания_idx" btree ("страна_проживания")
+Foreign-key constraints:
+    "fk_orders" FOREIGN KEY ("заказ") REFERENCES orders(id)
+
+test_db=# SELECT * FROM clients;
+ id |       фамилия        | страна_проживания | заказ 
+----+----------------------+-------------------+-------
+  4 | Ронни Джеймс Дио     | Russia            |      
+  5 | Ritchie Blackmore    | Russia            |      
+  1 | Иванов Иван Иванович | USA               |     3
+  2 | Петров Петр Петрович | Canada            |     4
+  3 | Иоганн Себастьян Бах | Japan             |     5
+(5 rows)
+
+
+```
+
 ### Как cдавать задание
 
 Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
