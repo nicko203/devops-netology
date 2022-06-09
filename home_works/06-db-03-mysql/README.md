@@ -284,8 +284,6 @@ socket          = /var/run/mysqld/mysqld.sock
 datadir         = /var/lib/mysql
 secure-file-priv= NULL
 
-# Custom config should go here
-!includedir /etc/mysql/conf.d/
 
 innodb_flush_method = O_DSYNC
 innodb_flush_log_at_trx_commit = 2
@@ -293,6 +291,10 @@ innodb_file_per_table = ON
 innodb_log_buffer_size = 1048576
 innodb_buffer_pool_size = 1431655765
 innodb_log_file_size = 104857600
+
+# Custom config should go here
+!includedir /etc/mysql/conf.d/
+
 ```
 
 
