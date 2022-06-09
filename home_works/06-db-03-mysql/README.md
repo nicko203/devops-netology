@@ -167,10 +167,36 @@ mysql> SELECT COUNT(*) FROM orders WHERE price > 300;
     - Фамилия "Pretty"
     - Имя "James"
 
+```
+CREATE USER 'test'@'localhost' 
+    IDENTIFIED WITH mysql_native_password BY 'test-pass'
+    WITH MAX_CONNECTIONS_PER_HOUR 100
+    PASSWORD EXPIRE INTERVAL 180 DAY
+    FAILED_LOGIN_ATTEMPTS 3
+    ATTRIBUTE '{"first_name":"James", "last_name":"Pretty"}';
+```
+
 Предоставьте привелегии пользователю `test` на операции SELECT базы `test_db`.
+
+```
+mysql> GRANT SELECT ON test_db.* to 'test'@'localhost';
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+```
+
     
 Используя таблицу INFORMATION_SCHEMA.USER_ATTRIBUTES получите данные по пользователю `test` и 
 **приведите в ответе к задаче**.
+
+```
+mysql> SELECT * FROM information_schema.user_attributes WHERE user LIKE '%test%';
++------+-----------+------------------------------------------------+
+| USER | HOST      | ATTRIBUTE                                      |
++------+-----------+------------------------------------------------+
+| test | localhost | {"last_name": "Pretty", "first_name": "James"} |
++------+-----------+------------------------------------------------+
+1 row in set (0.00 sec)
+
+```
 
 ## Задача 3
 
