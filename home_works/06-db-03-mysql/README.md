@@ -200,14 +200,69 @@ mysql> SELECT * FROM information_schema.user_attributes WHERE user LIKE '%test%'
 
 ## Задача 3
 
-Установите профилирование `SET profiling = 1`.
-Изучите вывод профилирования команд `SHOW PROFILES;`.
+Установите профилирование `SET profiling = 1`.  
+```
+mysql> SET profiling = 1;
+```
 
-Исследуйте, какой `engine` используется в таблице БД `test_db` и **приведите в ответе**.
+Изучите вывод профилирования команд `SHOW PROFILES;`.  
+```
+mysql> SHOW PROFILES;
++----------+------------+----------------------+
+| Query_ID | Duration   | Query                |
++----------+------------+----------------------+
+|        1 | 0.00011350 | SELECT * FROM orders |
+|        2 | 0.00023275 | SELECT DATABASE()    |
+|        3 | 0.00182900 | show databases       |
+|        4 | 0.00182975 | show tables          |
++----------+------------+----------------------+
+4 rows in set, 1 warning (0.00 sec)
+
+```
+
+Исследуйте, какой `engine` используется в таблице БД `test_db` и **приведите в ответе**.  
+```
+> SELECT table_schema, table_name, engine FROM information_schema.tables WHERE table_name = 'orders';
++--------------+------------+--------+
+| TABLE_SCHEMA | TABLE_NAME | ENGINE |
++--------------+------------+--------+
+| test_db      | orders     | InnoDB |
++--------------+------------+--------+
+1 row in set (0.00 sec)
+```
 
 Измените `engine` и **приведите время выполнения и запрос на изменения из профайлера в ответе**:
 - на `MyISAM`
 - на `InnoDB`
+
+```
+mysql> ALTER TABLE orders ENGINE = MyIsam;
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE orders ENGINE =InnoDB;
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+```
+
+```
+mysql> SHOW PROFILES;
++----------+------------+----------------------------------------------------------------------------------------------------+
+| Query_ID | Duration   | Query                                                                                              |
++----------+------------+----------------------------------------------------------------------------------------------------+
+|        1 | 0.00011350 | SELECT * FROM orders                                                                               |
+|        2 | 0.00023275 | SELECT DATABASE()                                                                                  |
+|        3 | 0.00182900 | show databases                                                                                     |
+|        4 | 0.00182975 | show tables                                                                                        |
+|        5 | 0.01035125 | SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES                                           |
+|        6 | 0.20537625 | SELECT * FROM information_schema.TABLES                                                            |
+|        7 | 0.00742275 | SELECT table_schema, table_name, engine FROM information_schema.TABLES                             |
+|        8 | 0.00170525 | SELECT table_schema, table_name, engine FROM information_schema.tables WHERE table_name = 'orders' |
+|        9 | 0.02397575 | ALTER TABLE orders ENGINE = MyIsam                                                                 |
+|       10 | 0.02001625 | ALTER TABLE orders ENGINE =InnoDB                                                                  |
++----------+------------+----------------------------------------------------------------------------------------------------+
+10 rows in set, 1 warning (0.00 sec)
+```
 
 ## Задача 4 
 
