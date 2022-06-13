@@ -199,7 +199,6 @@ test_database=# SELECT attname, avg_width FROM pg_stats WHERE tablename = 'order
 ```
 
 
-
 ## Задача 3
 
 Архитектор и администратор БД выяснили, что ваша таблица orders разрослась до невиданных размеров и
@@ -208,14 +207,69 @@ test_database=# SELECT attname, avg_width FROM pg_stats WHERE tablename = 'order
 
 Предложите SQL-транзакцию для проведения данной операции.
 
-Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
+```
+begin;
+
+  -- переименование "старой"  orders
+  alter table public.orders rename to orders_old;
+
+  -- создание новой orders с партиционированием
+  create table public.orders (
+      like public.orders_old
+      including defaults
+      including constraints
+      including indexes
+  );
+
+  create table public.orders_1 (
+      check (price>499)
+  ) inherits (public.orders);
+
+  create table public.orders_2 (
+      check (price<=499)
+  ) inherits (public.orders);
+
+  ALTER TABLE public.orders_1 OWNER TO postgres;
+  ALTER TABLE public.orders_2 OWNER TO postgres;
+
+  create rule orders_insert_over_499 as on insert to public.orders
+  where (price>499)
+  do instead insert into public.orders_1 values(NEW.*);
+
+  create rule orders_insert_499_or_less as on insert to public.orders
+  where (price<=499)
+  do instead insert into public.orders_2 values(NEW.*);
+
+  -- копирование данных из старой в новую
+  insert into public.orders (id,title,price) select id,title,price from public.orders_old;
+
+  -- перепривязывание SEQUENCE
+  alter table public.orders_old alter id drop default;
+  ALTER SEQUENCE public.orders_id_seq OWNED BY public.orders.id;
+
+  -- удаление старой orders
+  drop table public.orders_old;
+
+end;
+```
+
+Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?  
+Да, "ручного" разбиения можно было избежать при проектировании таблицы путём введения секционирования до внесения данных в таблицу.  
 
 ## Задача 4
 
-Используя утилиту `pg_dump` создайте бекап БД `test_database`.
+Используя утилиту `pg_dump` создайте бекап БД `test_database`.  
+
+```bash
+# pg_dump -h localhost -U postgres test_database > /var/lib/postgresql/dumps/test_dump_new.sql
+```
 
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
+```
+alter table orders_1 add constraint orders_1_title_unique unique (title);
 
+alter table orders_2 add constraint orders_2_title_unique unique (title);
+```
 ---
 
 ### Как cдавать задание
