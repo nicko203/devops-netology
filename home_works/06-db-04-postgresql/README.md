@@ -54,8 +54,11 @@ CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS    
 # docker exec -it postgresql-13-netology bash
 ```
 Подключаюсь к консоли PostgreSQL:  
-```bash
-# psql -h localhost -u postgres
+```
+# psql -h localhost -U postgres
+psql (13.7 (Debian 13.7-1.pgdg110+1))
+Type "help" for help.
+
 ```
 
 Вывод списка БД:  
@@ -82,14 +85,22 @@ You are now connected to database "netology" as user "postgres".
 
 Список таблиц:
 ```
+netology=# CREATE TABLE test (id SERIAL PRIMARY KEY, name TEXT);
+CREATE TABLE
+
+
 netology=# \dt
-Did not find any relations.
+        List of relations
+ Schema | Name | Type  |  Owner   
+--------+------+-------+----------
+ public | test | table | postgres
+(1 row)
+
+
 ```
 
 Вывод описания содержимого таблицы:
 ```
-netology=# CREATE TABLE test (id SERIAL PRIMARY KEY, name TEXT);
-CREATE TABLE
 netology=# \d test
                             Table "public.test"
  Column |  Type   | Collation | Nullable |             Default              
@@ -122,6 +133,72 @@ root@4c395321a1dc:/#
 с наибольшим средним значением размера элементов в байтах.
 
 **Приведите в ответе** команду, которую вы использовали для вычисления и полученный результат.
+
+
+## Решение:
+
+Создание БД test_database:
+```
+postgres=# CREATE DATABASE test_database;
+CREATE DATABASE
+
+```
+
+Восстановление бэкапа БД в test_database:  
+```bash
+# psql -h localhost -U postgres test_database < /var/lib/postgresql/dumps/test_dump.sql 
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+SET
+SET
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+ALTER TABLE
+COPY 8
+ setval 
+--------
+      8
+(1 row)
+
+ALTER TABLE
+```
+
+Операция ANALYZE для сбора статистики по таблице orders:
+
+```
+test_database=# ANALYZE VERBOSE orders;
+INFO:  analyzing "public.orders"
+INFO:  "orders": scanned 1 of 1 pages, containing 8 live rows and 0 dead rows; 8 rows in sample, 8 estimated total rows
+ANALYZE
+```
+
+Столбец таблицы orders с наибольшим средним значением размера элементов в байтах:  
+
+```
+test_database=# SELECT attname, avg_width FROM pg_stats WHERE tablename = 'orders' order by avg_width desc limit 1;
+ attname | avg_width 
+---------+-----------
+ title   |        16
+(1 row)
+
+```
+
+
 
 ## Задача 3
 
