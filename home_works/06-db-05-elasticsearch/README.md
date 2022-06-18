@@ -113,6 +113,7 @@ nicko-elasticsearch-docker: digest: sha256:56e1c6f599807b17a2bb2ccf70803f0ac3d46
 Ссылка на образ в репозитории dockerhub:  
 https://hub.docker.com/layers/235041514/nicko2003/devops-netology/nicko-elasticsearch-docker/images/sha256-c6d587f77b53bace35f794a93c24d9d91689a333d559392f4163f17327490f8a?context=repo
 
+Ответ elasticsearch на запрос пути / в json виде:  
 
 ```bash
 # curl localhost:9200
@@ -153,13 +154,101 @@ https://hub.docker.com/layers/235041514/nicko2003/devops-netology/nicko-elastics
 | ind-2 | 1 | 2 |
 | ind-3 | 2 | 4 |
 
+Добавляю индексы:  
+```bash
+# curl -H 'Content-Type: application/json'  -X PUT localhost:9200/ind-1 -d'
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,  
+      "number_of_replicas": 0 
+    }
+  }
+}'
+{"acknowledged":true,"shards_acknowledged":true,"index":"ind-1"}
+
+# curl -H 'Content-Type: application/json'  -X PUT localhost:9200/ind-2 -d'
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 2,  
+      "number_of_replicas": 1 
+    }
+  }
+}'
+{"acknowledged":true,"shards_acknowledged":true,"index":"ind-2"}
+
+# curl -H 'Content-Type: application/json'  -X PUT localhost:9200/ind-3 -d'
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 4,  
+      "number_of_replicas": 2 
+    }
+  }
+}'
+{"acknowledged":true,"shards_acknowledged":true,"index":"ind-3"}
+```
+
+
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.
+
+```bash
+# curl -X GET 'http://localhost:9200/_cat/indices?v'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   ind-1 0Zdrgkd0Rpyxm_CNZIimKA   1   0          0            0       225b           225b
+yellow open   ind-3 qSyj_X8hQNiASoIhs6fV3Q   4   2          0            0       900b           900b
+yellow open   ind-2 zIRm7gxrSS6Fjl2BctOXgA   2   1          0            0       450b           450b
+
+```
 
 Получите состояние кластера `elasticsearch`, используя API.
 
-Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?
+```bash
+# curl localhost:9200/_cluster/health | python3 -m json.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   411  100   411    0     0  68500      0 --:--:-- --:--:-- --:--:-- 82200
+{
+    "cluster_name": "netology_test_cluster",
+    "status": "yellow",
+    "timed_out": false,
+    "number_of_nodes": 1,
+    "number_of_data_nodes": 1,
+    "active_primary_shards": 8,
+    "active_shards": 8,
+    "relocating_shards": 0,
+    "initializing_shards": 0,
+    "unassigned_shards": 10,
+    "delayed_unassigned_shards": 0,
+    "number_of_pending_tasks": 0,
+    "number_of_in_flight_fetch": 0,
+    "task_max_waiting_in_queue_millis": 0,
+    "active_shards_percent_as_number": 44.44444444444444
+}
+```
+
+Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?  
+
+Поскольку кластер состоит из одной ноды, шарды индексов ind-2 и ind-3 не реплицированы и находятся в статусе unssigned. После добавления дополнительных нод в кластер на которые они смогут реплицироваться статус их изменится на GREEN, кластер так же сменит статус после репликации.
 
 Удалите все индексы.
+
+```bash
+# curl -X DELETE localhost:9200/ind-1
+{"acknowledged":true}
+
+# curl -X DELETE "localhost:9200/ind-2?pretty"
+{
+  "acknowledged" : true
+}
+
+# curl -X DELETE "localhost:9200/ind-3?pretty"
+{
+  "acknowledged" : true
+}
+
+```
 
 **Важно**
 
