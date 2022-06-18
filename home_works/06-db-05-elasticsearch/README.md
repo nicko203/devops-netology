@@ -268,12 +268,66 @@ yellow open   ind-2 zIRm7gxrSS6Fjl2BctOXgA   2   1          0            0      
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.
 
+```bash
+curl -X PUT "localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d'
+{
+  "type": "fs",
+  "settings": {
+    "location": "/var/lib/elasticsearch/snapshots",
+    "compress": true
+  }
+}'
+{
+  "acknowledged" : true
+}
+
+```
+
+Проверка:  
+```bash
+# curl -XGET 'http://localhost:9200/_snapshot/_all?pretty'
+{
+  "netology_backup" : {
+    "type" : "fs",
+    "settings" : {
+      "compress" : "true",
+      "location" : "/var/lib/elasticsearch/snapshots"
+    }
+  }
+}
+
+```
+
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
+
+```bash
+# curl -H 'Content-Type: application/json'  -X PUT localhost:9200/test -d'
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,  
+      "number_of_replicas": 0 
+    }
+  }
+}'
+{"acknowledged":true,"shards_acknowledged":true,"index":"test"}
+
+Список индексов:  
+
+# curl -X GET 'http://localhost:9200/_cat/indices?v'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test  P_pov1ZmR7ec_knINwtW-w   1   0          0            0       225b           225b
+
+```
 
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
 
+
+
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
+
+
 
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
 
