@@ -17,7 +17,7 @@
 ### Решение:
 Создан аккаунт в Yandex Cloud:  
 ```bash
-# yc config list
+$ yc config list
 token: AQAAAAAAR...
 cloud-id: b1gusbu5rl5peuirh6d4
 folder-id: b1giv01e8j41n6fkprqq
@@ -27,10 +27,10 @@ compute-default-zone: ru-central1-a
 Определена переменная окружения _*YC_TOKEN*_:  
 
 ```bash
-# export YC_TOKEN="AQAAAAAAR..."
+$ export YC_TOKEN="AQAAAAAAR..."
 ```
 ```bash
-# echo $YC_TOKEN
+$ echo $YC_TOKEN
 AQAAAAAAR...
 ```
 
@@ -66,6 +66,148 @@ AQAAAAAAR...
 1. Ответ на вопрос: при помощи какого инструмента (из разобранных на прошлом занятии) можно создать свой образ ami?
 1. Ссылку на репозиторий с исходной конфигурацией терраформа.  
  
+
+### Решение:  
+Создаю файл _*.terraformrc*_:  
+```bash
+$ touch ~/.terraformrc
+```
+Со следующим содержимым:  
+```bash
+$ cat ~/.terraformrc
+provider_installation {
+  network_mirror {
+    url = "https://terraform-mirror.yandexcloud.net/"
+    include = ["registry.terraform.io/*/*"]
+  }
+  direct {
+    exclude = ["registry.terraform.io/*/*"]
+  }
+}
+```
+
+Содержимое файла _*main.tf*_:  
+```bash
+$ cat ./main.tf 
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
+provider "yandex" {
+#  token     = "<OAuth>"
+  cloud_id  = "b1gusbu5rl5peuirh6d4"
+  folder_id = "b1giv01e8j41n6fkprqq"
+  zone      = "ru-central1-a"
+}
+```
+Значение _*token*_ берётся из перенной окружения _*YC_TOKEN*_.  
+
+Инициализирую провайдер:  
+```bash
+$ terraform init
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding latest version of yandex-cloud/yandex...
+- Installing yandex-cloud/yandex v0.76.0...
+- Installed yandex-cloud/yandex v0.76.0 (unauthenticated)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+```
+
+Проверяю на валидность:  
+```bash
+$ terraform validate
+```
+
+Проверяю на ошибки:  
+```bash
+$ terraform plan
+```
+Создаю ВМ в YC:  
+```bash
+$ terraform apply
+```
+
+В результате выполнения создаются ресурсы, определённые в main.tf, вывод последних строк из потока:  
+```bash
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+external_ip_address_vm_01 = "51.250.64.106"
+internal_ip_address_vm_01 = "192.168.10.3"
+
+```
+
+Подключаюсь к ВМ:  
+```bash
+$ ssh -l ubuntu 51.250.64.106
+The authenticity of host '51.250.64.106 (51.250.64.106)' can't be established.
+ECDSA key fingerprint is SHA256:iu90b4LFhZrnYklurkH7ybIXsHW90+6jtjneKOawGX4.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '51.250.64.106' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-121-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@fhm53be8smupdqcnj1ns:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether d0:0d:51:ad:c8:e5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.3/24 brd 192.168.10.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::d20d:51ff:fead:c8e5/64 scope link 
+       valid_lft forever preferred_lft forever
+ubuntu@fhm53be8smupdqcnj1ns:~$ uname -a
+Linux fhm53be8smupdqcnj1ns 5.4.0-121-generic #137-Ubuntu SMP Wed Jun 15 13:33:07 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+Удаляю ресурсы, созданные с помощью Terraform:  
+```bash
+$ terraform destroy
+...
+Destroy complete! Resources: 3 destroyed.
+
+```
+
 ---
 
 ### Как cдавать задание
