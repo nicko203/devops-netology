@@ -63,8 +63,12 @@ AQAAAAAAR...
 
 
 В качестве результата задания предоставьте:
-1. Ответ на вопрос: при помощи какого инструмента (из разобранных на прошлом занятии) можно создать свой образ ami?
-1. Ссылку на репозиторий с исходной конфигурацией терраформа.  
+1. Ответ на вопрос: при помощи какого инструмента (из разобранных на прошлом занятии) можно создать свой образ ami?  
+
+*Packer*
+
+2. Ссылку на репозиторий с исходной конфигурацией терраформа.  
+[main.tf](https://github.com/nicko203/devops-netology/blob/main/home_works/07-terraform-02-syntax/src/main.tf)
  
 
 ### Решение:  
@@ -134,6 +138,9 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 
 ```
+
+Определяю создаваемые ресурсы, окончательный вид в файле по ссылке: [main.tf](https://github.com/nicko203/devops-netology/blob/main/home_works/07-terraform-02-syntax/src/main.tf)
+
 
 Проверяю на валидность:  
 ```bash
