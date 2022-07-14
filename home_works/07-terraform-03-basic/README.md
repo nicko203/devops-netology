@@ -163,9 +163,9 @@ $ terraform workspace list
 ```
 
 
-<details>
-    <summary>Вывод команды `terraform plan` для воркспейса `prod`</summary>
-```
+Вывод команды `terraform plan` для воркспейса `prod`:  
+```bash
+
 $ terraform apply
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -183,9 +183,7 @@ Terraform will perform the following actions:
       + id                        = (known after apply)
       + metadata                  = {
           + "ssh-keys" = <<-EOT
-                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZK9/9+eNPTZpAouurTPlvoHBaV3evuCQ0UZC7RiDv57foUSGbaKNtq7FXPBfsd/leFo0b0wnghR383Z+G6Uky6QPK2nNTqY/xgH0B8xBKlWOn8X0UUoRdAWQjlexpaosjF8cMUzl7TLtuUaA4uVIUA0eP14sYZ3j80gKBFEjZgU9ONkTHlE2vNDRN3FWi8YEr3jRWKEWtZagARsaH85Sf8zimeU2StCy+OR3PUcVisy18Q9tocn2gnch1m/eKZEhdIBQ49LyiLYbFgekAfEVriI4C7oTL9UAyUUsJ1YachUXi6q1q1cyNr1yPoMtZqdk6veLlrJMmyWsFoIxQcgcdEMnLbvSBZiS/uviaxpg44caOs37WAq5Rem3WMREyrbd5yr+Vu/bQHWtrvNzn99tNkryxTXZUWYI+6AvH9+108iMU7lkGqu/mMqIoGx1Stnb3rmBI3euYxb4diViBeTmNOfSE+1/51cM024n5cviAdofZrJ/5pSViYbR8QnOIHXdB04u9NlH9agm8t8ewLm1YsUGHlQ/4EWYvI65Q/yFTPl872cVIY8U0nMQnq/kmLo2XW3AHbBh5x3i28xNi8Rr7m6ymDSyv0XnJ0tPjg0Foxw2HqJ3pR4rrb5LSHJ+C1na59kfpp8NufLZDwzaZ/53J8XT7YSgJH9xN+LuyEjWnGw== nicko@pc970.shaaz.ugmk.com
-                ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxvtuqIVHwGRGo7ZsbojltshXuepsUkdSrx82CfFRk7MunzoWzN1RG+o714AhhOfPQ6lS/BKpGgqbpyzyFdFacxbcnjOFkpmU/4PRo9SO+bQBLFChkE2I3xi3330uC73WB5kpKINyIEzawNvKaTt4y/dIPSB5HY3KlcekCpFPQd0VSK/M05ducQhDzmcvKq0q4YU8ReC9L5vMY0abUIc+LeoAGzkMZ+JKhdn7P7nJYtCc3R+7zktZ4A2XrS5ys6bEX/p1mymNhIbP4bnTJi7hPCLnTTkFu3UDVIblf0LRlf4c+pG4NRwwSBBzPCRm4r50i/qK/Ywhag0J5Asu3lZlaw==
-                ssh-rsa b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAJCCgfBcgoHwXAAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAEA8As2z5BHXdxbsax0DxIm9m7+aHRTjvIXsnEsOFK2lC7Fcu6rN/YlIYadR+0aUv/tgHZhlESyGRrUOji9konouAAAADUZvciBkYiB0dW5pbmc=
+                ubuntu:ssh-rsa 
             EOT
         }
       + name                      = "nicko2003-vm-01-prod-number-1"
@@ -252,9 +250,7 @@ Terraform will perform the following actions:
       + id                        = (known after apply)
       + metadata                  = {
           + "ssh-keys" = <<-EOT
-                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZK9/9+eNPTZpAouurTPlvoHBaV3evuCQ0UZC7RiDv57foUSGbaKNtq7FXPBfsd/leFo0b0wnghR383Z+G6Uky6QPK2nNTqY/xgH0B8xBKlWOn8X0UUoRdAWQjlexpaosjF8cMUzl7TLtuUaA4uVIUA0eP14sYZ3j80gKBFEjZgU9ONkTHlE2vNDRN3FWi8YEr3jRWKEWtZagARsaH85Sf8zimeU2StCy+OR3PUcVisy18Q9tocn2gnch1m/eKZEhdIBQ49LyiLYbFgekAfEVriI4C7oTL9UAyUUsJ1YachUXi6q1q1cyNr1yPoMtZqdk6veLlrJMmyWsFoIxQcgcdEMnLbvSBZiS/uviaxpg44caOs37WAq5Rem3WMREyrbd5yr+Vu/bQHWtrvNzn99tNkryxTXZUWYI+6AvH9+108iMU7lkGqu/mMqIoGx1Stnb3rmBI3euYxb4diViBeTmNOfSE+1/51cM024n5cviAdofZrJ/5pSViYbR8QnOIHXdB04u9NlH9agm8t8ewLm1YsUGHlQ/4EWYvI65Q/yFTPl872cVIY8U0nMQnq/kmLo2XW3AHbBh5x3i28xNi8Rr7m6ymDSyv0XnJ0tPjg0Foxw2HqJ3pR4rrb5LSHJ+C1na59kfpp8NufLZDwzaZ/53J8XT7YSgJH9xN+LuyEjWnGw== nicko@pc970.shaaz.ugmk.com
-                ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxvtuqIVHwGRGo7ZsbojltshXuepsUkdSrx82CfFRk7MunzoWzN1RG+o714AhhOfPQ6lS/BKpGgqbpyzyFdFacxbcnjOFkpmU/4PRo9SO+bQBLFChkE2I3xi3330uC73WB5kpKINyIEzawNvKaTt4y/dIPSB5HY3KlcekCpFPQd0VSK/M05ducQhDzmcvKq0q4YU8ReC9L5vMY0abUIc+LeoAGzkMZ+JKhdn7P7nJYtCc3R+7zktZ4A2XrS5ys6bEX/p1mymNhIbP4bnTJi7hPCLnTTkFu3UDVIblf0LRlf4c+pG4NRwwSBBzPCRm4r50i/qK/Ywhag0J5Asu3lZlaw==
-                ssh-rsa b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAJCCgfBcgoHwXAAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAEA8As2z5BHXdxbsax0DxIm9m7+aHRTjvIXsnEsOFK2lC7Fcu6rN/YlIYadR+0aUv/tgHZhlESyGRrUOji9konouAAAADUZvciBkYiB0dW5pbmc=
+                ubuntu:ssh-rsa 
             EOT
         }
       + name                      = "nicko2003-vm-01-prod-number-2"
@@ -321,9 +317,7 @@ Terraform will perform the following actions:
       + id                        = (known after apply)
       + metadata                  = {
           + "ssh-keys" = <<-EOT
-                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZK9/9+eNPTZpAouurTPlvoHBaV3evuCQ0UZC7RiDv57foUSGbaKNtq7FXPBfsd/leFo0b0wnghR383Z+G6Uky6QPK2nNTqY/xgH0B8xBKlWOn8X0UUoRdAWQjlexpaosjF8cMUzl7TLtuUaA4uVIUA0eP14sYZ3j80gKBFEjZgU9ONkTHlE2vNDRN3FWi8YEr3jRWKEWtZagARsaH85Sf8zimeU2StCy+OR3PUcVisy18Q9tocn2gnch1m/eKZEhdIBQ49LyiLYbFgekAfEVriI4C7oTL9UAyUUsJ1YachUXi6q1q1cyNr1yPoMtZqdk6veLlrJMmyWsFoIxQcgcdEMnLbvSBZiS/uviaxpg44caOs37WAq5Rem3WMREyrbd5yr+Vu/bQHWtrvNzn99tNkryxTXZUWYI+6AvH9+108iMU7lkGqu/mMqIoGx1Stnb3rmBI3euYxb4diViBeTmNOfSE+1/51cM024n5cviAdofZrJ/5pSViYbR8QnOIHXdB04u9NlH9agm8t8ewLm1YsUGHlQ/4EWYvI65Q/yFTPl872cVIY8U0nMQnq/kmLo2XW3AHbBh5x3i28xNi8Rr7m6ymDSyv0XnJ0tPjg0Foxw2HqJ3pR4rrb5LSHJ+C1na59kfpp8NufLZDwzaZ/53J8XT7YSgJH9xN+LuyEjWnGw== nicko@pc970.shaaz.ugmk.com
-                ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxvtuqIVHwGRGo7ZsbojltshXuepsUkdSrx82CfFRk7MunzoWzN1RG+o714AhhOfPQ6lS/BKpGgqbpyzyFdFacxbcnjOFkpmU/4PRo9SO+bQBLFChkE2I3xi3330uC73WB5kpKINyIEzawNvKaTt4y/dIPSB5HY3KlcekCpFPQd0VSK/M05ducQhDzmcvKq0q4YU8ReC9L5vMY0abUIc+LeoAGzkMZ+JKhdn7P7nJYtCc3R+7zktZ4A2XrS5ys6bEX/p1mymNhIbP4bnTJi7hPCLnTTkFu3UDVIblf0LRlf4c+pG4NRwwSBBzPCRm4r50i/qK/Ywhag0J5Asu3lZlaw==
-                ssh-rsa b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAJCCgfBcgoHwXAAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAEA8As2z5BHXdxbsax0DxIm9m7+aHRTjvIXsnEsOFK2lC7Fcu6rN/YlIYadR+0aUv/tgHZhlESyGRrUOji9konouAAAADUZvciBkYiB0dW5pbmc=
+                ubuntu:ssh-rsa 
             EOT
         }
       + name                      = "nicko2003-vm-02-prod01"
@@ -390,9 +384,7 @@ Terraform will perform the following actions:
       + id                        = (known after apply)
       + metadata                  = {
           + "ssh-keys" = <<-EOT
-                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZK9/9+eNPTZpAouurTPlvoHBaV3evuCQ0UZC7RiDv57foUSGbaKNtq7FXPBfsd/leFo0b0wnghR383Z+G6Uky6QPK2nNTqY/xgH0B8xBKlWOn8X0UUoRdAWQjlexpaosjF8cMUzl7TLtuUaA4uVIUA0eP14sYZ3j80gKBFEjZgU9ONkTHlE2vNDRN3FWi8YEr3jRWKEWtZagARsaH85Sf8zimeU2StCy+OR3PUcVisy18Q9tocn2gnch1m/eKZEhdIBQ49LyiLYbFgekAfEVriI4C7oTL9UAyUUsJ1YachUXi6q1q1cyNr1yPoMtZqdk6veLlrJMmyWsFoIxQcgcdEMnLbvSBZiS/uviaxpg44caOs37WAq5Rem3WMREyrbd5yr+Vu/bQHWtrvNzn99tNkryxTXZUWYI+6AvH9+108iMU7lkGqu/mMqIoGx1Stnb3rmBI3euYxb4diViBeTmNOfSE+1/51cM024n5cviAdofZrJ/5pSViYbR8QnOIHXdB04u9NlH9agm8t8ewLm1YsUGHlQ/4EWYvI65Q/yFTPl872cVIY8U0nMQnq/kmLo2XW3AHbBh5x3i28xNi8Rr7m6ymDSyv0XnJ0tPjg0Foxw2HqJ3pR4rrb5LSHJ+C1na59kfpp8NufLZDwzaZ/53J8XT7YSgJH9xN+LuyEjWnGw== nicko@pc970.shaaz.ugmk.com
-                ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxvtuqIVHwGRGo7ZsbojltshXuepsUkdSrx82CfFRk7MunzoWzN1RG+o714AhhOfPQ6lS/BKpGgqbpyzyFdFacxbcnjOFkpmU/4PRo9SO+bQBLFChkE2I3xi3330uC73WB5kpKINyIEzawNvKaTt4y/dIPSB5HY3KlcekCpFPQd0VSK/M05ducQhDzmcvKq0q4YU8ReC9L5vMY0abUIc+LeoAGzkMZ+JKhdn7P7nJYtCc3R+7zktZ4A2XrS5ys6bEX/p1mymNhIbP4bnTJi7hPCLnTTkFu3UDVIblf0LRlf4c+pG4NRwwSBBzPCRm4r50i/qK/Ywhag0J5Asu3lZlaw==
-                ssh-rsa b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAJCCgfBcgoHwXAAAAAtzc2gtZWQyNTUxOQAAACCxXLuqzf2JSGGnUftGlL/7YB2YZREshka1Do4vZKJ6LgAAAEA8As2z5BHXdxbsax0DxIm9m7+aHRTjvIXsnEsOFK2lC7Fcu6rN/YlIYadR+0aUv/tgHZhlESyGRrUOji9konouAAAADUZvciBkYiB0dW5pbmc=
+                ubuntu:ssh-rsa 
             EOT
         }
       + name                      = "nicko2003-vm-02-prod02"
@@ -541,7 +533,6 @@ yandex_compute_instance.vm-01[1]: Creation complete after 49s [id=fhmtqkua69uv8r
 
 Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 ```
-</details>
 
 ### Как cдавать задание
 
