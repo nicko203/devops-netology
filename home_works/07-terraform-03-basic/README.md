@@ -163,7 +163,8 @@ $ terraform workspace list
 ```
 
 
-Вывод команды `terraform plan` для воркспейса `prod`:  
+- Вывод команды `terraform plan` для воркспейса `prod`:  
+
 ```bash
 
 $ terraform apply
