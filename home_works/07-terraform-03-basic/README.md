@@ -162,6 +162,9 @@ $ terraform workspace list
 
 ```
 
+- Результат работы команды `terraform plan` для воркспейса `prod`:  
+![prod_instances.png](prod_instances.png)
+  
 
 - Вывод команды `terraform plan` для воркспейса `prod`:  
 
