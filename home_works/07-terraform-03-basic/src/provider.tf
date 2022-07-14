@@ -12,8 +12,8 @@ terraform {
     bucket     = "tf-state-bucket-test-nicko2003"
     region     = "ru-central1-a"
     key        = "terraform/infrastructure1/terraform.tfstate"
-    access_key = "YCAJEtjunMCLlTzcdyERKzNBd"
-    secret_key = "YCPxkeSzF732raWeBiUcBg2TGLOXA2NqTw5sx4pS"
+    access_key = "YCA...NBd"
+    secret_key = "YCP...4pS"
 
 #Load from keys.tf
 #    access_key = "${var.yandex_cloud_s3_access_key}"

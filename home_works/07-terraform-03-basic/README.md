@@ -165,7 +165,7 @@ $ terraform workspace list
 
 <details>
     <summary>Вывод команды `terraform plan` для воркспейса `prod`</summary>
-
+```
 $ terraform apply
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -540,7 +540,7 @@ yandex_compute_instance.vm-01[1]: Still creating... [40s elapsed]
 yandex_compute_instance.vm-01[1]: Creation complete after 49s [id=fhmtqkua69uv8rrkgf5n]
 
 Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
-
+```
 </details>
 
 ### Как cдавать задание
