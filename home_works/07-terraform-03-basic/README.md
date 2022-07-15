@@ -162,11 +162,11 @@ $ terraform workspace list
 
 ```
 
-- Результат работы команды `terraform plan` для воркспейса `prod`:  
+- Результат работы команды `terraform apply` для воркспейса `prod`:  
 ![prod_instances.png](prod_instances.png)
   
 
-- Вывод команды `terraform plan` для воркспейса `prod`:  
+- Вывод команды `terraform apply` для воркспейса `prod`:  
 
 ```bash
 
