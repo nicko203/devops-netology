@@ -1,0 +1,7 @@
+---
+  - src: git@github.com:nicko203/kibana-role.git
+    scm: git
+    name: kibana
+  - src: git@github.com:nicko203/elastic-role.git
+    scm: git
+    name: elastic

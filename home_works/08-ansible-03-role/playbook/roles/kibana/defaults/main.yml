@@ -1,0 +1,4 @@
+---
+# defaults file for kibana-role
+kibana_version: "8.3.2"
+kibana_home: "/opt/kibana/{{ kibana_version }}"

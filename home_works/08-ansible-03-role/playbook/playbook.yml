@@ -1,0 +1,12 @@
+---
+- name: Install Elasticsearch
+  hosts: elasticsearch
+  roles:
+    - elastic
+  tags: elastic
+
+- name: Install Kibana
+  hosts: kibana
+  roles:
+    - kibana
+  tags: kibana
