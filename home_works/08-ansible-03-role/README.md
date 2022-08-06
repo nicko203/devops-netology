@@ -160,6 +160,8 @@ INFO     Pruning extra files from scenario ephemeral directory
 
 [kibana](https://github.com/nicko203/kibana-role)
 
+[playbook](https://github.com/nicko203/devops-netology/blob/main/home_works/08-ansible-03-role/playbook/playbook.yml)
+
 
 
 P.S.
