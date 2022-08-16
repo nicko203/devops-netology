@@ -394,6 +394,7 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=0    s
 
 Если идей нет, но очень хочется попробовать что-то реализовать: реализовать module восстановления из backup elasticsearch.
 
+
 ---
 
 ### Как оформить ДЗ?
