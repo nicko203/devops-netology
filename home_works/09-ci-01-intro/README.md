@@ -39,6 +39,11 @@
 
 Если всё отработало в рамках ожидания - выгрузить схемы workflow для импорта в XML. Файлы с workflow приложить к решению задания.
 
+Файлы workflow:  
+
+[Bug](https://github.com/nicko203/devops-netology/blob/main/home_works/09-ci-01-intro/Bug.xml)  
+[No bug](https://github.com/nicko203/devops-netology/blob/main/home_works/09-ci-01-intro/NotBug.xml)  
+
 ---
 
 ### Как оформить ДЗ?
