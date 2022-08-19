@@ -80,6 +80,9 @@ $ cat nexus-data/admin.password
 3. Проверяем, что все файлы загрузились успешно
 4. В ответе присылаем файл `maven-metadata.xml` для этого артефекта
 
+[maven-metadata.xml](https://github.com/nicko203/devops-netology/blob/main/home_works/09-ci-02-cicd/maven-metadata.xml)
+
+
 ### Знакомство с Maven
 
 ### Подготовка к выполнению
