@@ -61,6 +61,11 @@ sonar-scanner \
 3. Ждём запуск, смотрим логи через `docker logs -f nexus`
 4. Проверяем готовность сервиса через [бразуер](http://localhost:8081)
 5. Узнаём пароль от admin через `docker exec -it nexus /bin/bash`
+```
+$ cat nexus-data/admin.password 
+00adb7cf-ff2f-4c88-b3fc-d969bcc4dcbd
+```
+
 6. Подключаемся под админом, меняем пароль, сохраняем анонимный доступ
 
 ### Основная часть
