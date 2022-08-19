@@ -90,6 +90,14 @@ $ cat nexus-data/admin.password
 1. Скачиваем дистрибутив с [maven](https://maven.apache.org/download.cgi)
 2. Разархивируем, делаем так, чтобы binary был доступен через вызов в shell (или меняем переменную PATH или любой другой удобный вам способ)
 3. Проверяем `mvn --version`
+```
+# mvn --version
+Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
+Maven home: /root/netology/09-ci-02-cicd/apache-maven-3.8.6
+Java version: 17.0.4, vendor: Debian, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+Default locale: ru_RU, platform encoding: UTF-8
+OS name: "linux", version: "5.10.0-14-amd64", arch: "amd64", family: "unix"
+```
 4. Забираем директорию [mvn](./mvn) с pom
 
 ### Основная часть
