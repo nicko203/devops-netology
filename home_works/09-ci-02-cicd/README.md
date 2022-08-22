@@ -132,7 +132,9 @@ OS name: "linux", version: "5.10.0-14-amd64", arch: "amd64", family: "unix"
 
 2. Запускаем команду `mvn package` в директории с `pom.xml`, ожидаем успешного окончания
 3. Проверяем директорию `~/.m2/repository/`, находим наш артефакт
-4. В ответе присылаем исправленный файл `pom.xml`
+4. В ответе присылаем исправленный файл `pom.xml`  
+
+[pom.xml](https://github.com/nicko203/devops-netology/blob/main/home_works/09-ci-02-cicd/pom.xml)
 
 ---
 
