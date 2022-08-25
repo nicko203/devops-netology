@@ -4,8 +4,14 @@
 
 1. Установить jenkins по любой из [инструкций](https://www.jenkins.io/download/)
 ```
+# ps aux | grep docker
+root      407861  0.1  0.7 1680468 94988 ?       Ssl  09:21   0:00 /usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --containerd=/run/containerd/containerd.sock
+
+
 # docker pull jenkins/jenkins
 # docker run -d -p 8080:8080 -p 50000:50000 --name jenkins jenkins/jenkins
+# docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+0088bdc1437546a597ae67534c69c747
 ```
 2. Запустить и проверить работоспособность:  
 
@@ -14,6 +20,17 @@
 3. Сделать первоначальную настройку
 4. Настроить под свои нужды
 5. Поднять отдельный cloud
+
+`Dashboard -> Configure Cloud -> Add a new cloud (Docker)`
+  
+![jenkins_cloud_create](jenkins_cloud_create.png)
+
+
+`Docker Agent templates -> Add docker template`
+  
+![jenkins_docker_agent](jenkins_docker_agent.png)
+
+
 6. Для динамических агентов можно использовать [образ](https://hub.docker.com/repository/docker/aragast/agent)
 7. Обязательный параметр: поставить label для динамических агентов: `ansible_docker`
 8.  Сделать форк репозитория с [playbook](https://github.com/aragastmatb/example-playbook)
