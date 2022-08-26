@@ -124,6 +124,14 @@ node("ansible_docker"){
     }
 }
 ```
+
+![done_log1](done_log1.png)
+  
+![done_log2](done_log2.png)
+  
+![done_log3](done_log3.png)
+
+
 8. Отправить ссылку на репозиторий в ответе:  
 
 https://github.com/nicko203/freestylejob.git
