@@ -57,7 +57,14 @@ systemctl status jenkins
 ![FreeStyleJob_log2](freestylejob_log2.png)
 
 
-2. Сделать Declarative Pipeline, который будет выкачивать репозиторий с плейбукой и запускать её
+2. Сделать Declarative Pipeline, который будет выкачивать репозиторий с плейбукой и запускать её  
+
+![DeclarativePipeline_create](DeclarativePipeline_create.png)
+  
+![declarativepipeline_log1](declarativepipeline_log1.png)
+  
+![declarativepipeline_log2](declarativepipeline_log2.png)
+
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`
 4. Перенастроить Job на использование `Jenkinsfile` из репозитория
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline)
