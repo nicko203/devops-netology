@@ -51,6 +51,10 @@ systemctl status jenkins
 Скриншот выполнения тестирования:  
 
 ![FreeStyleJob](FreeStyleJob.png)
+  
+![FreeStyleJob_log1](freestylejob_log1.png)
+  
+![FreeStyleJob_log2](freestylejob_log2.png)
 
 
 2. Сделать Declarative Pipeline, который будет выкачивать репозиторий с плейбукой и запускать её
