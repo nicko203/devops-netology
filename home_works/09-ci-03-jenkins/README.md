@@ -39,6 +39,12 @@ root      407861  0.1  0.7 1680468 94988 ?       Ssl  09:21   0:00 /usr/bin/dock
 
 1. Сделать Freestyle Job, который будет запускать `ansible-playbook` из форка репозитория  
 
+Настройка:
+
+![freestylejob_create](freestylejob_create.png)
+
+Скриншот выполнения тестирования:  
+
 ![FreeStyleJob](FreeStyleJob.png)
 
 
