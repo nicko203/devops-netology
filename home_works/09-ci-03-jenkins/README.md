@@ -105,7 +105,28 @@ pipeline {
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline)
 6. Заменить credentialsId на свой собственный
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозитрий в файл `ScriptedJenkinsfile`
-8. Отправить ссылку на репозиторий в ответе
+```
+node("ansible_docker"){
+    stage("Git checkout"){
+        git credentialsId: 'adf8b006-11c5-415e-821c-5bc0d51c58bd', url: 'https://github.com/nicko203/freestylejob.git'
+    }
+    stage("Check ssh key"){
+        secret_check=true
+    }
+    stage("Run playbook"){
+        if (secret_check){
+        sh 'ansible-galaxy install -r requirements.yml -p roles'
+            sh 'ansible-playbook site.yml -i inventory/prod.yml'
+        }
+        else{
+            echo 'no more keys'
+        }
+    }
+}
+```
+8. Отправить ссылку на репозиторий в ответе:  
+
+https://github.com/nicko203/freestylejob.git
 
 ## Необязательная часть
 
