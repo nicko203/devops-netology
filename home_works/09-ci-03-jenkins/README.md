@@ -42,7 +42,11 @@ systemctl status jenkins
 
 Настройка:
 
-![freestylejob_create](freestylejob_create.png)
+![freestylejob_create1](freestylejob_create1.png)
+  
+![freestylejob_create2](freestylejob_create2.png)
+  
+![freestylejob_create3](freestylejob_create3.png)
 
 Скриншот выполнения тестирования:  
 
