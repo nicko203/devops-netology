@@ -60,13 +60,48 @@ systemctl status jenkins
 2. Сделать Declarative Pipeline, который будет выкачивать репозиторий с плейбукой и запускать её  
 
 ![DeclarativePipeline_create](DeclarativePipeline_create.png)
+
+  
+Скриншот выполнения тестирования:
+  
+![DeclarativePipelineJob](DeclarativePipelineJob.png)
   
 ![declarativepipeline_log1](declarativepipeline_log1.png)
   
 ![declarativepipeline_log2](declarativepipeline_log2.png)
 
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`
-4. Перенастроить Job на использование `Jenkinsfile` из репозитория
+  
+`Jenkinsfile`  в репозитории:  
+```
+pipeline {
+    agent {
+        label "ansible_docker"
+    }
+
+    stages {
+        stage('prepare_node') {
+            steps {
+                git 'https://github.com/nicko203/freestylejob.git'
+                sh 'ansible-galaxy install -r requirements.yml -p roles'
+                sh 'ansible-playbook site.yml -i inventory/prod.yml'
+            }
+        }
+    }
+}
+```
+4. Перенастроить Job на использование `Jenkinsfile` из репозитория  
+
+![PipelineSCM_create](PipelineSCM_create.png)
+  
+Скриншот выполнения тестирования:  
+
+![pipelineSCM_log1](pipelineSCM_log1.png)
+  
+![pipelineSCM_log2](pipelineSCM_log2.png)
+  
+![pipelineSCM_log3](pipelineSCM_log3.png)
+
 5. Создать Scripted Pipeline, наполнить его скриптом из [pipeline](./pipeline)
 6. Заменить credentialsId на свой собственный
 7. Проверить работоспособность, исправить ошибки, исправленный Pipeline вложить в репозитрий в файл `ScriptedJenkinsfile`
