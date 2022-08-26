@@ -37,7 +37,11 @@ root      407861  0.1  0.7 1680468 94988 ?       Ssl  09:21   0:00 /usr/bin/dock
 
 ## Основная часть
 
-1. Сделать Freestyle Job, который будет запускать `ansible-playbook` из форка репозитория
+1. Сделать Freestyle Job, который будет запускать `ansible-playbook` из форка репозитория  
+
+![FreeStyleJob](FreeStyleJob.png)
+
+
 2. Сделать Declarative Pipeline, который будет выкачивать репозиторий с плейбукой и запускать её
 3. Перенести Declarative Pipeline в репозиторий в файл `Jenkinsfile`
 4. Перенастроить Job на использование `Jenkinsfile` из репозитория
