@@ -4,14 +4,15 @@
 
 1. Установить jenkins по любой из [инструкций](https://www.jenkins.io/download/)
 ```
-# ps aux | grep docker
-root      407861  0.1  0.7 1680468 94988 ?       Ssl  09:21   0:00 /usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --containerd=/run/containerd/containerd.sock
-
-
-# docker pull jenkins/jenkins
-# docker run -d -p 8080:8080 -p 50000:50000 --name jenkins jenkins/jenkins
-# docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-0088bdc1437546a597ae67534c69c747
+apt-get update
+apt-get upgrade
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]     https://pkg.jenkins.io/debian-stable binary/ | sudo tee     /etc/apt/sources.list.d/jenkins.list > /dev/null
+apt-get update
+apt-get install fontconfig openjdk-11-jre
+apt-get install jenkins
+systemctl restart jenkins
+systemctl status jenkins
 ```
 2. Запустить и проверить работоспособность:  
 
