@@ -125,6 +125,8 @@ node("ansible_docker"){
 }
 ```
 
+Настройка аналогична пункту 4, заисключением поля Script Path - в него прописываем значение ScriptedJenkinsfile (имя файла из репозитория).
+
 ![done_log1](done_log1.png)
   
 ![done_log2](done_log2.png)
